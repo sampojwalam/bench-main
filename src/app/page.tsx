@@ -247,7 +247,7 @@ export default function HomePage() {
 
       {/* ============== FINAL CTA ============== */}
       <Section className="py-28">
-        <div className={`${styles.downloadCard} relative overflow-hidden rounded-[2rem] border border-ink-200 p-10 sm:p-16 text-center`}>
+        <div className={`${styles.downloadCard} relative overflow-hidden rounded-[2rem] border border-ink-200 px-5 py-10 sm:px-8 sm:py-16 md:p-16 text-center`}>
           <h2 className="text-4xl sm:text-6xl font-bold tracking-tight text-balance text-ink-900">
             Make your next set count.
           </h2>
@@ -255,7 +255,7 @@ export default function HomePage() {
             Get started for free in under a minute. Available on iOS, Android,
             and on the web.
           </p>
-          <StoreButtonGroup className="mt-10" />
+          <StoreButtonGroup className={`${styles.heroButtons} mt-8 sm:mt-10`} />
         </div>
       </Section>
     </>
