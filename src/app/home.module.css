@@ -48,3 +48,21 @@
 
 .cardHeading { font-size: 30px; line-height: 1.2; font-weight: 600; }
 @media (min-width: 640px) { .cardHeading { font-size: 36px; } }
+
+.hero { padding-top: 40px; }
+.heroTitle { font-size: clamp(32px, 10.5vw, 60px); line-height: 1.08; margin-inline: auto; }
+.heroTitleAccent { white-space: nowrap; padding-bottom: .12em; margin-top: .08em; line-height: 1.1; text-wrap: balance; }
+.heroIntro { margin-top: 20px; max-width: 38rem; font-size: 16px; line-height: 1.65; text-wrap: pretty; }
+.heroButtons a { min-height: 48px; white-space: nowrap; }
+.heroRating { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; margin-top: 20px; }
+@media (min-width: 640px) {
+  .hero { padding-top: 56px; }
+  .heroTitle { font-size: clamp(56px, 8vw, 96px); }
+  .heroTitleAccent { white-space: nowrap; }
+  .heroIntro { margin-top: 24px; font-size: 18px; }
+  .heroRating { flex-direction: row; gap: 10px; margin-top: 24px; }
+}
+@media (min-width: 1024px) {
+  .hero { padding-top: 80px; }
+  .heroIntro { font-size: 20px; max-width: 42rem; }
+}

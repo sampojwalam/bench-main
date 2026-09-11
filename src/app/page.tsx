@@ -22,7 +22,7 @@ export default function HomePage() {
   return (
     <>
       {/* ============== HERO ============== */}
-      <section className="relative overflow-hidden pt-12 sm:pt-20 pb-24">
+      <section className={`${styles.hero} relative overflow-hidden pb-24`} >
         {/* Background glow */}
         <div
           aria-hidden
@@ -35,15 +35,15 @@ export default function HomePage() {
         </div>
 
         <div className="mx-auto max-w-7xl px-5 sm:px-8 text-center">
-          <h1 className="text-[40px] sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.05] text-ink-900 animate-fade-up">
+          <h1 className={`${styles.heroTitle} font-bold tracking-tight text-ink-900 animate-fade-up`}>
             <span className="block">Meet your new</span>
-            <span className="block bench-gradient-text mt-2 sm:mt-3 md:mt-4 leading-[1.15] pb-2">
+            <span className={`${styles.heroTitleAccent} block bench-gradient-text`}>
               gym companion.
             </span>
           </h1>
 
           <p
-            className="mt-6 text-lg sm:text-xl text-ink-500 max-w-2xl mx-auto text-pretty animate-fade-up"
+            className={`${styles.heroIntro} text-ink-500 mx-auto animate-fade-up`}
             style={{ animationDelay: "80ms" }}
           >
             Log your lifts, understand your progress, create and share
@@ -52,17 +52,17 @@ export default function HomePage() {
           </p>
 
           <div
-            className="mt-10 animate-fade-up"
+            className="mt-7 sm:mt-9 animate-fade-up"
             style={{ animationDelay: "160ms" }}
           >
-            <StoreButtonGroup />
+            <StoreButtonGroup className={styles.heroButtons} />
           </div>
 
           <div
-            className="mt-6 flex items-center justify-center gap-2 text-xs text-ink-500 animate-fade-up"
+            className={`${styles.heroRating} text-xs text-ink-500 animate-fade-up`}
             style={{ animationDelay: "240ms" }}
           >
-            <span className="relative inline-flex" aria-label="Rated 4.7 out of 5">
+            <span className="relative inline-flex shrink-0" aria-label="Rated 4.7 out of 5">
               {/* Base: 5 outline stars */}
               <span
                 className="flex gap-0.5 text-ink-200"
@@ -87,7 +87,7 @@ export default function HomePage() {
                 <Icon name="star" size={14} />
               </span>
             </span>
-            <span>Loved by lifters worldwide. Free to use</span>
+            <span className="whitespace-nowrap">Loved by lifters worldwide. Free to use.</span>
           </div>
 
           {/* Product screenshots sit together on a soft, raised stage. */}
