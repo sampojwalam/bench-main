@@ -45,3 +45,6 @@
 @media (max-width: 767px) { .spotlightGrid { grid-template-columns: 1fr; gap: 20px; }.trackingCard { grid-template-columns: 1fr; }.trackingCard .featureCopy { padding: 30px; }.trackingCard .phoneStage { height: 390px; padding-top: 32px; }.trackingCard .cardPhone { width: 240px; }.phoneStage { height: 370px; }.webStage { padding: 10px; border-radius: 16px; } }
 @media (max-width: 420px) { .featureCopy, .trackingCard .featureCopy { padding: 28px 24px; }.cardPhone, .trackingCard .cardPhone { width: 225px; }.phoneStage, .trackingCard .phoneStage { height: 340px; } }
 @media (prefers-reduced-motion: reduce) { .faqIcon { transition: none; } }
+
+.cardHeading { font-size: 30px; line-height: 1.2; font-weight: 600; }
+@media (min-width: 640px) { .cardHeading { font-size: 36px; } }

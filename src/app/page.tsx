@@ -1,11 +1,9 @@
-import Link from "next/link";
 import Image from "next/image";
 import { Section, Eyebrow } from "@/components/Section";
 import { Button } from "@/components/Button";
 import { StoreButtonGroup } from "@/components/StoreButtons";
 import styles from "./home.module.css";
 import { Icon } from "@/components/Icon";
-import { features } from "@/lib/features";
 
 function BrowserPreview({ hero = false }: { hero?: boolean }) {
   return (
@@ -139,10 +137,10 @@ export default function HomePage() {
           <article className={styles.featureCard}>
             <div className={styles.featureCopy}>
               <Eyebrow>Progress analytics</Eyebrow>
-              <h2 className="mt-5 text-4xl sm:text-5xl font-bold tracking-tight text-balance text-ink-900">
+              <h2 className={`${styles.cardHeading} mt-5 tracking-tight text-balance text-ink-900`}>
                 Charts that update <span className="bench-gradient-text">every rep.</span>
               </h2>
-              <p className="mt-5 text-lg text-ink-500 text-pretty">
+              <p className="mt-4 text-ink-500 leading-relaxed">
                 See exercise stats, rep-max history, and how your training
                 balances across muscle groups. Every logged session adds to the picture.
               </p>
@@ -159,41 +157,36 @@ export default function HomePage() {
               copy: "Set strength, volume, or frequency goals. Bench calculates your progress from the workouts you log.",
               href: "/features/goals", cta: "Set a goal", image: "goals",
               alt: "Bench mobile app showing progress toward a training goal", blue: true,
-              titleClass: "text-3xl font-semibold",
             },
             {
               eyebrow: "Workout library", title: "Discover workouts from real lifters.",
               copy: "Explore public routines, preview the exercises, and save your favorites. Make a routine your own before your next session.",
               href: "/features/workout-library", cta: "Browse the library", image: "workout-library",
               alt: "Bench mobile app showing a community workout and its exercises", blue: true,
-              titleClass: "text-3xl sm:text-4xl font-semibold text-balance",
             },
             {
               eyebrow: "Social", title: "Lift harder when you're not lifting alone.",
               copy: "Follow lifters, message them directly, and share programs you believe in. Keep the training conversation going beyond the gym.",
               href: "/features/social", cta: "Meet the community", image: "social",
               alt: "A direct message conversation between lifters in Bench", blue: false,
-              titleClass: "text-3xl sm:text-4xl font-semibold text-balance",
             },
             {
               eyebrow: "History", title: "Every session, forever.",
               copy: "Revisit your workouts, sets, reps, and notes. Your training history is at hand on your phone, tablet, or the web.",
               href: "/features/history", cta: "View your history", image: "history",
               alt: "Bench workout history showing a calendar of completed sessions", blue: false,
-              titleClass: "text-3xl font-semibold",
             },
             {
               eyebrow: "Exercise library", title: "A place for every movement.",
               copy: "Find exercises by muscle group or create a custom movement. Build your sessions around the way you train.",
               href: "/features/exercise-library", cta: "Explore exercises", image: "exercise-library",
               alt: "Bench exercise library organized by muscle group", blue: true,
-              titleClass: "text-3xl sm:text-4xl font-semibold text-balance",
             },
           ].map((card, index) => (
             <article key={card.href} className={styles.featureCard}>
               <div className={styles.featureCopy}>
                 <Eyebrow>{card.eyebrow}</Eyebrow>
-                <h3 className={`mt-5 tracking-tight text-ink-900 ${card.titleClass}`}>{card.title}</h3>
+                <h3 className={`${styles.cardHeading} mt-5 tracking-tight text-balance text-ink-900`}>{card.title}</h3>
                 <p className="mt-4 text-ink-500 leading-relaxed">{card.copy}</p>
                 <div className="mt-8"><Button href={card.href} variant="ghost">{card.cta}</Button></div>
               </div>
@@ -223,62 +216,6 @@ export default function HomePage() {
           </div>
         </div>
         <div className={styles.webStage}><BrowserPreview /></div>
-      </Section>
-
-      {/* ============== FEATURES GRID ============== */}
-      <Section className="py-28">
-        <div className="max-w-2xl">
-          <h2 className="mt-5 text-4xl sm:text-5xl font-bold tracking-tight text-balance text-ink-900">
-            Every feature a serious lifter needs.
-          </h2>
-          <p className="mt-5 text-lg text-ink-500 text-pretty">
-            From the first warm-up set to your next PR, Bench captures the data
-            and surfaces the insights that make your training compound.
-          </p>
-        </div>
-
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {features.map((f, i) => (
-            <Link
-              key={f.slug}
-              href={`/features/${f.slug}`}
-              className="group relative rounded-2xl border border-ink-100 bg-white shadow-card hover:shadow-cardHover hover:border-ink-200 transition-all p-6 overflow-hidden"
-            >
-              <div className="flex items-center justify-between">
-                <span className="inline-flex items-center justify-center w-11 h-11 rounded-xl bench-gradient text-white">
-                  <Icon name={f.icon} size={22} />
-                </span>
-                <span className="text-ink-400 text-xs">
-                  0{i + 1}
-                </span>
-              </div>
-              <h3 className="mt-5 text-xl font-semibold tracking-tight text-ink-900">
-                {f.name}
-              </h3>
-              <p className="mt-2 text-sm text-ink-500 leading-relaxed">
-                {f.description}
-              </p>
-              <div className="mt-6 inline-flex items-center gap-1.5 text-sm text-ink-700 group-hover:text-ink-900 transition-colors">
-                Learn more
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  fill="none"
-                  className="transition-transform group-hover:translate-x-0.5"
-                >
-                  <path
-                    d="M3 7H11M11 7L7.5 3.5M11 7L7.5 10.5"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-            </Link>
-          ))}
-        </div>
       </Section>
 
       {/* ============== FAQ ============== */}
