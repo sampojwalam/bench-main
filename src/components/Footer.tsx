@@ -148,7 +148,7 @@ export function Footer() {
         <div className="mt-14 pt-6 border-t border-ink-100 flex flex-col sm:flex-row justify-between gap-4 text-xs text-ink-400">
           <span>© {new Date().getFullYear()} Bench LLC. All rights reserved.</span>
           <span className="flex items-center gap-2">
-            Built for lifters. <span className="bench-gradient-text font-semibold">Made with iron.</span>
+            Built for lifters. <span className="bench-gradient-text font-semibold">Made for the love of lifting.</span>
           </span>
         </div>
       </div>
