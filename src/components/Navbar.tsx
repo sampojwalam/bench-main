@@ -1,12 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Logo } from "./Logo";
 import { Button } from "./Button";
 import { features } from "@/lib/features";
 
 export function Navbar() {
+  const mobileTrigger = useRef<HTMLButtonElement>(null);
+  const featuresTrigger = useRef<HTMLButtonElement>(null);
   const [open, setOpen] = useState(false);
   const [featuresOpen, setFeaturesOpen] = useState(false);
   const [mobileFeaturesOpen, setMobileFeaturesOpen] = useState(false);
@@ -19,6 +21,21 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      if (open) {
+        setOpen(false);
+        mobileTrigger.current?.focus();
+      } else if (featuresOpen) {
+        setFeaturesOpen(false);
+        featuresTrigger.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [open, featuresOpen]);
+
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
@@ -27,10 +44,10 @@ export function Navbar() {
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      <nav className="mx-auto max-w-7xl px-5 sm:px-8 h-16 flex items-center justify-between">
+      <nav className="relative mx-auto max-w-7xl px-5 sm:px-8 h-16 flex items-center justify-between">
         <Logo />
 
-        <div className="hidden md:flex items-center gap-1 text-sm text-ink-700">
+        <div className="hidden md:flex h-full items-center gap-1 text-sm text-ink-700">
           <Link
             href="/"
             className="px-3 py-2 rounded-full hover:text-ink-900 hover:bg-ink-50 transition-colors"
@@ -39,16 +56,20 @@ export function Navbar() {
           </Link>
 
           <div
-            className="relative"
+            className="flex h-full items-center"
+            onBlur={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget)) setFeaturesOpen(false);
+            }}
             onMouseEnter={() => setFeaturesOpen(true)}
             onMouseLeave={() => setFeaturesOpen(false)}
           >
             <button
               type="button"
-              onClick={() => setFeaturesOpen((v) => !v)}
+              ref={featuresTrigger}
+              onClick={(event) => setFeaturesOpen((v) => event.detail === 0 ? !v : true)}
               className="px-3 py-2 rounded-full hover:text-ink-900 hover:bg-ink-50 transition-colors flex items-center gap-1"
               aria-expanded={featuresOpen}
-              aria-haspopup="menu"
+              aria-controls="desktop-features"
             >
               Features
               <svg
@@ -71,17 +92,19 @@ export function Navbar() {
             </button>
 
             <div
-              className={`absolute right-0 top-full pt-3 transition-all duration-200 ${
+              id="desktop-features"
+              className={`absolute right-8 top-full w-[640px] max-w-[calc(100vw-4rem)] pt-3 transition-all duration-200 ${
                 featuresOpen
                   ? "opacity-100 visible translate-y-0"
                   : "opacity-0 invisible -translate-y-2 pointer-events-none"
               }`}
             >
-              <div className="w-[640px] rounded-2xl bg-white border border-ink-100 shadow-cardHover p-3 grid grid-cols-2 gap-1">
+              <div className="max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain rounded-2xl bg-white border border-ink-100 shadow-cardHover p-3 grid grid-cols-2 gap-1">
                 {features.map((f) => (
                   <Link
                     key={f.slug}
                     href={`/features/${f.slug}`}
+                    onClick={() => setFeaturesOpen(false)}
                     className="group flex items-start gap-3 p-3 rounded-xl hover:bg-ink-50 transition-colors"
                   >
                     <span className="flex-shrink-0 inline-flex items-center justify-center w-9 h-9 rounded-lg bench-gradient text-white text-[18px]">
@@ -122,7 +145,10 @@ export function Navbar() {
 
         <button
           type="button"
-          aria-label="Toggle menu"
+          ref={mobileTrigger}
+          aria-label={open ? "Close navigation" : "Open navigation"}
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
           className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full bg-white border border-ink-200 text-ink-900"
           onClick={() => setOpen((v) => !v)}
         >
@@ -147,7 +173,7 @@ export function Navbar() {
       </nav>
 
       {open && (
-        <div className="md:hidden border-t border-ink-100 bg-white">
+        <div id="mobile-navigation" className="md:hidden max-h-[calc(100dvh-4rem-1px)] overflow-y-auto overscroll-contain border-t border-ink-100 bg-white">
           <div className="px-5 py-4 flex flex-col gap-1">
             <Link
               href="/"
@@ -158,6 +184,8 @@ export function Navbar() {
             </Link>
             <button
               type="button"
+              aria-expanded={mobileFeaturesOpen}
+              aria-controls="mobile-features"
               onClick={() => setMobileFeaturesOpen((v) => !v)}
               className="px-3 py-2.5 rounded-lg text-sm text-ink-700 hover:bg-ink-50 flex items-center justify-between"
             >
@@ -181,7 +209,7 @@ export function Navbar() {
               </svg>
             </button>
             {mobileFeaturesOpen && (
-              <div className="pl-3 flex flex-col">
+              <div id="mobile-features" className="pl-3 flex flex-col">
                 {features.map((f) => (
                   <Link
                     key={f.slug}
