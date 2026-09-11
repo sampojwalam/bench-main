@@ -17,7 +17,7 @@
 .deviceStrip { display: flex; align-items: center; justify-content: space-between; gap: 26px; padding: 30px 0; font-size: 14px; }
 .deviceStrip > div { white-space: nowrap; }
 @media (max-width: 1050px) { .deviceStrip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }.deviceStrip > p { grid-column: 1 / -1; }.heroStage { padding: 35px 6% 40px 3%; }.heroPhone { width: 23%; } }
-@media (max-width: 640px) { .heroStage { padding: 20px 5% 40px 3%; border-radius: 16px; }.heroBrowser { width: 100%; transform: none; }.heroPhone { width: 26%; min-width: 92px; bottom: -16px; right: 3%; }.browserFrame { border-radius: 9px; padding: 3px; }.browserBar { height: 28px; padding: 0 7px 3px; }.browserAddress { font-size: 10px; height: 20px; width: 65%; }.browserAddress > span { display: none; }.browserDots { gap: 3px; }.browserDots span { width: 4px; height: 4px; }.deviceStrip { grid-template-columns: 1fr; gap: 20px; padding: 28px 0; }.deviceStrip > p { margin-bottom: 2px; } }
+@media (max-width: 640px) { .heroStage { padding: 12px 8px 32px; margin-inline: -8px; border-radius: 16px; }.heroBrowser { width: 100%; transform: none; }.heroPhone { width: 26%; min-width: 92px; bottom: -16px; right: 3%; }.browserFrame { border-radius: 9px; padding: 3px; }.browserBar { height: 28px; padding: 0 7px 3px; }.browserAddress { font-size: 10px; height: 20px; width: 65%; }.browserAddress > span { display: none; }.browserDots { gap: 3px; }.browserDots span { width: 4px; height: 4px; }.deviceStrip { grid-template-columns: 1fr; gap: 20px; padding: 28px 0; }.deviceStrip > p { margin-bottom: 2px; } }
 
 .spotlightGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
 .featureCard { overflow: hidden; min-width: 0; border: 1px solid #e7e3ed; border-radius: 26px; background: #fbfafc; display: flex; flex-direction: column; box-shadow: 0 4px 16px -12px #3123421a; }
@@ -69,3 +69,5 @@
 
 
 @media (max-width: 379px) { .downloadCard .heroButtons > div > a { padding-inline: 6px; } }
+
+@media (max-width: 640px) { .hero .heroStage { margin-top: 32px; } }
