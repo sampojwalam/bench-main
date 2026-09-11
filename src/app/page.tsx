@@ -3,9 +3,22 @@ import Image from "next/image";
 import { Section, Eyebrow } from "@/components/Section";
 import { Button } from "@/components/Button";
 import { StoreButtonGroup } from "@/components/StoreButtons";
-import { PhoneMockup, ScreenshotPlaceholder } from "@/components/Placeholder";
+import styles from "./home.module.css";
 import { Icon } from "@/components/Icon";
 import { features } from "@/lib/features";
+
+function BrowserPreview({ hero = false }: { hero?: boolean }) {
+  return (
+    <div className={styles.browserFrame}>
+      <div className={styles.browserBar} aria-hidden="true">
+        <div className={styles.browserDots}><span /><span /><span /></div>
+        <div className={styles.browserAddress}><Icon name="lock" size={12} />app.benchgymlog.com</div>
+        <Icon name="open_in_full" size={13} />
+      </div>
+      <Image src="/screenshots/dashboard.png" alt="Bench web dashboard showing workout totals, exercise stats, volume distribution, and training history" width={1824} height={1026} priority={hero} sizes="(min-width: 1280px) 1152px, 95vw" className={styles.dashboard} />
+    </div>
+  );
+}
 
 export default function HomePage() {
   return (
@@ -79,57 +92,26 @@ export default function HomePage() {
             <span>Loved by lifters worldwide. Free to use</span>
           </div>
 
-          {/* Hero product preview */}
-          <div
-            className="mt-16 relative animate-fade-up"
-            style={{ animationDelay: "320ms" }}
-          >
-            <div className="absolute inset-x-0 -top-10 bottom-0 -z-10 bench-gradient blur-3xl opacity-[0.10] rounded-full" />
-            <div className="mx-auto max-w-5xl">
-              <div className="relative rounded-3xl border border-ink-200 bg-white p-3 shadow-cardHover">
-                <div className="relative rounded-2xl overflow-hidden aspect-video bg-ink-50">
-                  <Image
-                    src="/screenshots/dashboard.png"
-                    alt="Bench Gym Log web dashboard showing your training history, charts, and stats"
-                    fill
-                    priority
-                    sizes="(min-width: 1024px) 960px, 100vw"
-                    className="object-cover object-top"
-                  />
-                </div>
-              </div>
-              {/* Floating phone (mockup image already includes the iPhone frame) */}
-              <div className="absolute -right-6 sm:-right-16 -bottom-6 sm:-bottom-10 w-44 sm:w-64 hidden md:block">
-                <Image
-                  src="/screenshots/log-workout-mockup.png"
-                  alt="Bench mobile app showing a workout being logged in real time"
-                  width={722}
-                  height={1500}
-                  priority
-                  sizes="(min-width: 640px) 256px, 176px"
-                  className="w-full h-auto"
-                />
-              </div>
+          {/* Product screenshots sit together on a soft, raised stage. */}
+          <div className={`${styles.heroStage} mt-16 animate-fade-up`} style={{ animationDelay: "320ms" }}>
+            <div className={styles.heroBrowser}><BrowserPreview hero /></div>
+            <div className={styles.heroPhone}>
+              <Image src="/screenshots/log-workout-mockup.png" alt="Bench iPhone app logging warmup and working sets" width={722} height={1500} priority sizes="(min-width: 1024px) 250px, (min-width: 640px) 190px, 120px" className="w-full h-auto" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* ============== STATS BAR ============== */}
-      <Section className="py-16 border-y border-ink-100 bg-ink-50">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      {/* ============== DEVICE STRIP ============== */}
+      <Section className="border-y border-ink-100 bg-ink-50/60">
+        <div className={styles.deviceStrip}>
+          <p className="font-semibold text-ink-900">One Account. All Your Devices.</p>
           {[
-            { stat: "400+", label: "Built-in exercises" },
-            { stat: "1,000+", label: "Public workouts" },
-            { stat: "Unlimited", label: "Workout history" },
-            { stat: "Zero ads", label: "No distractions" },
-          ].map((s) => (
-            <div key={s.label} className="text-center md:text-left">
-              <div className="text-3xl sm:text-4xl font-bold tracking-tight bench-gradient-text">
-                {s.stat}
-              </div>
-              <div className="mt-2 text-sm text-ink-500">{s.label}</div>
-            </div>
+            { icon: "phone_iphone", text: "Made for the gym floor" },
+            { icon: "desktop_windows", text: "More room on web" },
+            { icon: "done_all", text: "Automatically synced" },
+          ].map(({ icon, text }) => (
+            <div key={text} className="flex items-center gap-3 text-ink-500"><span aria-hidden="true" className="text-ink-400"><Icon name={icon} size={22} /></span><span>{text}</span></div>
           ))}
         </div>
       </Section>
@@ -137,7 +119,6 @@ export default function HomePage() {
       {/* ============== FEATURES GRID ============== */}
       <Section className="py-28">
         <div className="max-w-2xl">
-          <Eyebrow>Built for the gym floor</Eyebrow>
           <h2 className="mt-5 text-4xl sm:text-5xl font-bold tracking-tight text-balance text-ink-900">
             Every feature a serious lifter needs.
           </h2>
@@ -191,219 +172,143 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* ============== FEATURE SPOTLIGHT 1 — Tracking ============== */}
-      <Section className="py-28">
-        <div className="grid lg:grid-cols-2 gap-14 items-center">
-          <div>
-            <Eyebrow>Workout tracking</Eyebrow>
-            <h2 className="mt-5 text-4xl sm:text-5xl font-bold tracking-tight text-balance text-ink-900">
-              Log a set in <span className="bench-gradient-text">one tap.</span>
-            </h2>
-            <p className="mt-5 text-lg text-ink-500 text-pretty">
-              The interface gets out of your way. Tap to log, watch the rest
-              timer count down, swap exercises when the machine you wanted is
-              taken — and never lose your spot.
-            </p>
-            <ul className="mt-8 space-y-3.5">
-              {[
-                "Auto-starting rest timers between every set",
-                "Mid-workout exercise swaps without data loss",
-                "Notes on every set for RPE, tempo, or cues",
-                "Past sessions can be logged manually after the fact",
-              ].map((line) => (
-                <li key={line} className="flex items-start gap-3 text-ink-700">
-                  <span className="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bench-gradient">
-                    <svg width="8" height="8" viewBox="0 0 10 10" fill="none">
-                      <path d="M2 5L4 7L8 3" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
-                  <span className="text-sm sm:text-base">{line}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-10">
-              <Button href="/features/workout-tracking" variant="ghost">
-                Explore workout tracking
-              </Button>
+      {/* ============== FEATURE SPOTLIGHTS ============== */}
+      <Section className="pb-20 sm:pb-28">
+        <div className={styles.spotlightGrid}>
+          <article className={`${styles.featureCard} ${styles.trackingCard}`}>
+            <div className={styles.featureCopy}>
+              <Eyebrow>Workout tracking</Eyebrow>
+              <h2 className="mt-5 text-4xl sm:text-5xl font-bold tracking-tight text-balance text-ink-900">
+                Log a set in <span className="bench-gradient-text">one tap.</span>
+              </h2>
+              <p className="mt-5 text-lg text-ink-500 text-pretty">
+                The interface gets out of your way. Log your sets, keep your
+                rest timer close, and add the notes you’ll want next time.
+              </p>
+              <div className="mt-8"><Button href="/features/workout-tracking" variant="ghost">Explore workout tracking</Button></div>
             </div>
-          </div>
-          <div className="relative">
-            <div className="absolute -inset-10 -z-10 bg-bench-radial-soft blur-2xl" />
-            <div className="mx-auto max-w-sm">
-              <Image
-                src="/screenshots/log-workout-mockup.png"
-                alt="Bench mobile app workout logging screen"
-                width={722}
-                height={1500}
-                sizes="(min-width: 1024px) 384px, (min-width: 640px) 384px, 280px"
-                className="w-full h-auto"
-              />
+            <div className={`${styles.phoneStage} ${styles.purpleStage}`}>
+              <Image src="/screenshots/log-workout-mockup.png" alt="Bench mobile workout log with warmup and working sets" width={722} height={1500} sizes="(min-width: 640px) 270px, 225px" className={`${styles.cardPhone} ${styles.tiltRight}`} />
             </div>
-          </div>
-        </div>
-      </Section>
+          </article>
 
-      {/* ============== FEATURE SPOTLIGHT 2 — Analytics ============== */}
-      <Section className="py-28">
-        <div className="grid lg:grid-cols-2 gap-14 items-center">
-          <div className="order-2 lg:order-1">
-            <div className="relative rounded-3xl border border-ink-200 bg-white p-3 shadow-card">
-              <ScreenshotPlaceholder label="Strength trend chart" aspect="wide" />
+          <article className={styles.featureCard}>
+            <div className={styles.featureCopy}>
+              <Eyebrow>Progress analytics</Eyebrow>
+              <h2 className="mt-5 text-4xl sm:text-5xl font-bold tracking-tight text-balance text-ink-900">
+                Charts that update <span className="bench-gradient-text">every rep.</span>
+              </h2>
+              <p className="mt-5 text-lg text-ink-500 text-pretty">
+                See exercise stats, rep-max history, and how your training
+                balances across muscle groups. Every logged session adds to the picture.
+              </p>
+              <div className="mt-8"><Button href="/features/analytics" variant="ghost">Explore analytics</Button></div>
             </div>
-            <div className="grid grid-cols-2 gap-3 mt-3">
-              <ScreenshotPlaceholder label="Rep-max history" aspect="square" />
-              <ScreenshotPlaceholder label="Volume distribution" aspect="square" />
+            <div className={`${styles.phoneStage} ${styles.purpleStage}`}>
+              <Image src="/screenshots/analytics-mockup.png" alt="Bench mobile analytics showing volume distribution across muscle groups" width={722} height={1500} sizes="(min-width: 640px) 270px, 225px" className={`${styles.cardPhone} ${styles.tiltLeft}`} />
             </div>
-          </div>
-          <div className="order-1 lg:order-2">
-            <Eyebrow>Progress analytics</Eyebrow>
-            <h2 className="mt-5 text-4xl sm:text-5xl font-bold tracking-tight text-balance text-ink-900">
-              Charts that update <span className="bench-gradient-text">every rep.</span>
-            </h2>
-            <p className="mt-5 text-lg text-ink-500 text-pretty">
-              Every set you log feeds a deep analytics layer. See total volume,
-              rep-max history, session count, and how your training balances
-              across muscle groups — over any time range.
-            </p>
-            <ul className="mt-8 space-y-3.5">
-              {[
-                "Per-exercise stats: volume, sets, reps, sessions",
-                "Lifetime PR tracking across every rep range",
-                "Volume distribution across every muscle group",
-                "Filter charts to any custom time range",
-              ].map((line) => (
-                <li key={line} className="flex items-start gap-3 text-ink-700">
-                  <span className="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bench-gradient">
-                    <svg width="8" height="8" viewBox="0 0 10 10" fill="none">
-                      <path d="M2 5L4 7L8 3" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
-                  <span className="text-sm sm:text-base">{line}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-10">
-              <Button href="/features/analytics" variant="ghost">
-                Explore analytics
-              </Button>
-            </div>
-          </div>
-        </div>
-      </Section>
+          </article>
 
-      {/* ============== EXPLORE & COMMUNITY ============== */}
-      <Section className="py-28">
-        <div className="grid lg:grid-cols-12 gap-6">
-          <div className="lg:col-span-7 relative rounded-3xl border border-ink-100 bg-ink-50 p-8 sm:p-12 overflow-hidden">
-            <div className="absolute -top-32 -right-32 h-80 w-80 rounded-full bg-bench-purple/15 blur-[100px]" />
-            <Eyebrow>Workout library</Eyebrow>
-            <h3 className="mt-5 text-3xl sm:text-4xl font-semibold tracking-tight text-balance text-ink-900">
-              Discover workouts from real lifters.
-            </h3>
-            <p className="mt-4 text-ink-500 max-w-lg">
-              Browse thousands of public routines, preview the exercises, and
-              start them with a single tap. Clone any program to your library
-              and make it your own.
-            </p>
-            <div className="mt-8">
-              <ScreenshotPlaceholder label="Explore tab" aspect="wide" />
-            </div>
-            <div className="mt-6">
-              <Button href="/features/workout-library" variant="ghost">
-                Browse the library
-              </Button>
-            </div>
-          </div>
-
-          <div className="lg:col-span-5 relative rounded-3xl border border-ink-100 bg-ink-50 p-8 sm:p-12 overflow-hidden">
-            <div className="absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-bench-blue/15 blur-[100px]" />
-            <Eyebrow>Social</Eyebrow>
-            <h3 className="mt-5 text-3xl sm:text-4xl font-semibold tracking-tight text-balance text-ink-900">
-              Lift harder when you're not lifting alone.
-            </h3>
-            <p className="mt-4 text-ink-500">
-              Follow lifters, message them directly, and share programs you
-              believe in. Bench is a community of people who care about getting
-              better.
-            </p>
-            <div className="mt-8 grid grid-cols-2 gap-3">
-              <ScreenshotPlaceholder label="Profile" aspect="tall" />
-              <ScreenshotPlaceholder label="Messages" aspect="tall" />
-            </div>
-            <div className="mt-6">
-              <Button href="/features/social" variant="ghost">
-                Meet the community
-              </Button>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* ============== GOALS & HISTORY DUO ============== */}
-      <Section className="py-28">
-        <div className="grid md:grid-cols-2 gap-6">
           {[
             {
-              eyebrow: "Goals",
-              title: "Stay accountable to a target.",
-              copy: "Set strength, volume, or frequency goals. Bench updates progress automatically every time you log a qualifying set.",
-              href: "/features/goals",
-              cta: "Set a goal",
-              label: "Goal progress",
+              eyebrow: "Goals", title: "Stay accountable to a target.",
+              copy: "Set strength, volume, or frequency goals. Bench calculates your progress from the workouts you log.",
+              href: "/features/goals", cta: "Set a goal", image: "goals",
+              alt: "Bench mobile app showing progress toward a training goal", blue: true,
+              titleClass: "text-3xl font-semibold",
             },
             {
-              eyebrow: "History",
-              title: "Every session, forever.",
-              copy: "Calendar and list views of every workout you've ever logged — accessible from your phone, tablet, or the web.",
-              href: "/features/history",
-              cta: "View your history",
-              label: "Workout calendar",
+              eyebrow: "Workout library", title: "Discover workouts from real lifters.",
+              copy: "Explore public routines, preview the exercises, and save your favorites. Make a routine your own before your next session.",
+              href: "/features/workout-library", cta: "Browse the library", image: "workout-library",
+              alt: "Bench mobile app showing a community workout and its exercises", blue: true,
+              titleClass: "text-3xl sm:text-4xl font-semibold text-balance",
+            },
+            {
+              eyebrow: "Social", title: "Lift harder when you're not lifting alone.",
+              copy: "Follow lifters, message them directly, and share programs you believe in. Keep the training conversation going beyond the gym.",
+              href: "/features/social", cta: "Meet the community", image: "social",
+              alt: "A direct message conversation between lifters in Bench", blue: false,
+              titleClass: "text-3xl sm:text-4xl font-semibold text-balance",
+            },
+            {
+              eyebrow: "History", title: "Every session, forever.",
+              copy: "Revisit your workouts, sets, reps, and notes. Your training history is at hand on your phone, tablet, or the web.",
+              href: "/features/history", cta: "View your history", image: "history",
+              alt: "Bench workout history showing a calendar of completed sessions", blue: false,
+              titleClass: "text-3xl font-semibold",
+            },
+            {
+              eyebrow: "Exercise library", title: "A place for every movement.",
+              copy: "Find exercises by muscle group or create a custom movement. Build your sessions around the way you train.",
+              href: "/features/exercise-library", cta: "Explore exercises", image: "exercise-library",
+              alt: "Bench exercise library organized by muscle group", blue: true,
+              titleClass: "text-3xl sm:text-4xl font-semibold text-balance",
             },
           ].map((card) => (
-            <div
-              key={card.title}
-              className="relative rounded-3xl border border-ink-100 bg-ink-50 p-8 sm:p-10 overflow-hidden"
-            >
-              <Eyebrow>{card.eyebrow}</Eyebrow>
-              <h3 className="mt-5 text-3xl font-semibold tracking-tight text-ink-900">
-                {card.title}
-              </h3>
-              <p className="mt-4 text-ink-500">{card.copy}</p>
-              <div className="mt-8">
-                <ScreenshotPlaceholder label={card.label} aspect="wide" />
+            <article key={card.href} className={styles.featureCard}>
+              <div className={styles.featureCopy}>
+                <Eyebrow>{card.eyebrow}</Eyebrow>
+                <h3 className={`mt-5 tracking-tight text-ink-900 ${card.titleClass}`}>{card.title}</h3>
+                <p className="mt-4 text-ink-500 leading-relaxed">{card.copy}</p>
+                <div className="mt-8"><Button href={card.href} variant="ghost">{card.cta}</Button></div>
               </div>
-              <div className="mt-6">
-                <Button href={card.href} variant="ghost">
-                  {card.cta}
-                </Button>
+              <div className={`${styles.phoneStage} ${card.blue ? styles.blueStage : styles.purpleStage}`}>
+                <Image src={`/screenshots/${card.image}-mockup.png`} alt={card.alt} width={card.image === "goals" ? 723 : 722} height={1500} sizes="(min-width: 640px) 270px, 225px" className={`${styles.cardPhone} ${card.blue ? styles.tiltRight : styles.tiltLeft}`} />
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </Section>
 
-      {/* ============== TESTIMONIALS / QUOTE ============== */}
-      <Section className="py-24">
-        <div className="relative rounded-3xl border border-ink-100 bg-gradient-to-b from-ink-50 to-white p-10 sm:p-16 text-center overflow-hidden">
-          <div className="absolute inset-x-0 -top-40 h-80 bg-bench-radial-soft blur-3xl opacity-90" />
-          <Eyebrow>Why lifters love Bench</Eyebrow>
-          <p className="mt-8 text-2xl sm:text-3xl font-medium tracking-tight max-w-3xl mx-auto text-balance leading-snug text-ink-900">
-            "The interface gets out of your way. Bench feels like the logger
-            <span className="bench-gradient-text"> a serious lifter would build for themselves.</span>"
-          </p>
-          <div className="mt-8 flex items-center justify-center gap-3 text-sm text-ink-500">
-            <span className="h-px w-12 bg-ink-200" />
-            <span>Bench user · since 2022</span>
-            <span className="h-px w-12 bg-ink-200" />
+      {/* ============== BENCH ON THE WEB ============== */}
+      <Section id="bench-on-web" className="py-20 sm:py-28 border-y border-ink-100 bg-ink-50/70 overflow-hidden">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-16 items-end mb-12">
+          <div>
+            <Eyebrow>Meet Bench on the web</Eyebrow>
+            <h2 className="mt-5 text-4xl sm:text-5xl font-bold tracking-tight text-balance text-ink-900">
+              Your training.<br /><span className="bench-gradient-text">A bigger picture.</span>
+            </h2>
+          </div>
+          <div>
+            <p className="text-lg text-ink-500 text-pretty">
+              Review your history, build your routines, and explore your progress
+              with room to breathe. Sign in with the same account you use at the gym.
+            </p>
+            <div className="mt-7"><Button href="https://app.benchgymlog.com/signup" external variant="ghost">Get Started on Web</Button></div>
+          </div>
+        </div>
+        <div className={styles.webStage}><BrowserPreview /></div>
+      </Section>
+
+      {/* ============== FAQ ============== */}
+      <Section className="pt-20 sm:pt-28">
+        <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-8 lg:gap-20">
+          <div>
+            <Eyebrow>Frequently asked questions</Eyebrow>
+            <h2 className="mt-5 text-4xl sm:text-5xl font-bold tracking-tight text-balance text-ink-900">A little more about Bench.</h2>
+            <p className="mt-5 text-ink-500">Need a hand? <a className="underline underline-offset-4 hover:text-ink-900" href="mailto:support@benchgymlog.com">Get in touch.</a></p>
+          </div>
+          <div className={styles.faqList}>
+            {[
+              ["Can I use Bench for free?", "Yes. Create a free account and start logging workouts. Premium unlocks additional features and higher limits, including detailed volume analytics and more saved workouts and goals. Current options are available inside the app."],
+              ["Can I use the same account on mobile and web?", "Yes. Sign in with the same Bench account on iOS, Android, and the web to access your saved workouts, goals, and training history across your devices."],
+              ["Can I create my own workout routines?", "Yes. Choose exercises, plan your sets and rep ranges, and save the routine to your library. You can also explore public workouts shared by other lifters."],
+              ["Do I have to share my workouts?", "No. Publishing routines and connecting with other lifters are optional. You can use Bench simply to track your own training."],
+              ["Is Bench just for experienced lifters?", "No. Start with a simple workout log whether you’re learning your first lifts or following an established program. Explore stats and goals as your training history grows."],
+            ].map(([question, answer]) => (
+              <details key={question} className={styles.faqItem}>
+                <summary className="text-base sm:text-lg font-medium text-ink-900"><span>{question}</span><span className={styles.faqIcon} aria-hidden="true"><Icon name="add" size={22} /></span></summary>
+                <p className="pb-6 pr-8 text-base text-ink-500 leading-relaxed">{answer}</p>
+              </details>
+            ))}
           </div>
         </div>
       </Section>
 
       {/* ============== FINAL CTA ============== */}
       <Section className="py-28">
-        <div className="relative overflow-hidden rounded-[2rem] border border-ink-200 bg-white p-10 sm:p-16 text-center">
-          <div className="absolute inset-0 -z-10 bench-gradient opacity-[0.08]" />
-          <div className="absolute inset-0 -z-10 bg-grid bg-grid opacity-40 grid-mask" />
+        <div className={`${styles.downloadCard} relative overflow-hidden rounded-[2rem] border border-ink-200 p-10 sm:p-16 text-center`}>
           <h2 className="text-4xl sm:text-6xl font-bold tracking-tight text-balance text-ink-900">
             Make your next set count.
           </h2>
