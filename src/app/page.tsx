@@ -58,12 +58,13 @@ export default function HomePage() {
             <StoreButtonGroup className={styles.heroButtons} />
           </div>
 
+          {/* Rating row hidden while trying a cleaner hero.
           <div
             className={`${styles.heroRating} text-xs text-ink-500 animate-fade-up`}
             style={{ animationDelay: "240ms" }}
           >
             <span className="relative inline-flex shrink-0" aria-label="Rated 4.7 out of 5">
-              {/* Base: 5 outline stars */}
+
               <span
                 className="flex gap-0.5 text-ink-200"
                 style={{ fontVariationSettings: "'FILL' 0" }}
@@ -74,7 +75,7 @@ export default function HomePage() {
                 <Icon name="star" size={14} />
                 <Icon name="star" size={14} />
               </span>
-              {/* Overlay: 5 filled stars clipped to 94% (4.7/5) */}
+
               <span
                 className="absolute inset-y-0 left-0 flex gap-0.5 text-bench-purple overflow-hidden"
                 style={{ width: "94%", fontVariationSettings: "'FILL' 1" }}
@@ -89,9 +90,10 @@ export default function HomePage() {
             </span>
             <span className="whitespace-nowrap">Loved by lifters worldwide. Free to use.</span>
           </div>
+          */}
 
           {/* Product screenshots sit together on a soft, raised stage. */}
-          <div className={`${styles.heroStage} mt-16 animate-fade-up`} style={{ animationDelay: "320ms" }}>
+          <div className={`${styles.heroStage} mt-10 sm:mt-12 animate-fade-up`} style={{ animationDelay: "320ms" }}>
             <div className={styles.heroBrowser}><BrowserPreview hero /></div>
             <div className={styles.heroPhone}>
               <Image src="/screenshots/log-workout-mockup.png" alt="Bench iPhone app logging warmup and working sets" width={722} height={1500} priority sizes="(min-width: 1024px) 250px, (min-width: 640px) 190px, 120px" className="w-full h-auto" />
