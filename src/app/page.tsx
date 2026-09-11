@@ -116,64 +116,8 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* ============== FEATURES GRID ============== */}
-      <Section className="py-28">
-        <div className="max-w-2xl">
-          <h2 className="mt-5 text-4xl sm:text-5xl font-bold tracking-tight text-balance text-ink-900">
-            Every feature a serious lifter needs.
-          </h2>
-          <p className="mt-5 text-lg text-ink-500 text-pretty">
-            From the first warm-up set to your next PR, Bench captures the data
-            and surfaces the insights that make your training compound.
-          </p>
-        </div>
-
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {features.map((f, i) => (
-            <Link
-              key={f.slug}
-              href={`/features/${f.slug}`}
-              className="group relative rounded-2xl border border-ink-100 bg-white shadow-card hover:shadow-cardHover hover:border-ink-200 transition-all p-6 overflow-hidden"
-            >
-              <div className="flex items-center justify-between">
-                <span className="inline-flex items-center justify-center w-11 h-11 rounded-xl bench-gradient text-white">
-                  <Icon name={f.icon} size={22} />
-                </span>
-                <span className="text-ink-400 text-xs">
-                  0{i + 1}
-                </span>
-              </div>
-              <h3 className="mt-5 text-xl font-semibold tracking-tight text-ink-900">
-                {f.name}
-              </h3>
-              <p className="mt-2 text-sm text-ink-500 leading-relaxed">
-                {f.description}
-              </p>
-              <div className="mt-6 inline-flex items-center gap-1.5 text-sm text-ink-700 group-hover:text-ink-900 transition-colors">
-                Learn more
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  fill="none"
-                  className="transition-transform group-hover:translate-x-0.5"
-                >
-                  <path
-                    d="M3 7H11M11 7L7.5 3.5M11 7L7.5 10.5"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </Section>
-
       {/* ============== FEATURE SPOTLIGHTS ============== */}
-      <Section className="pb-20 sm:pb-28">
+      <Section className="py-20 sm:py-28">
         <div className={styles.spotlightGrid}>
           <article className={`${styles.featureCard} ${styles.trackingCard}`}>
             <div className={styles.featureCopy}>
@@ -245,7 +189,7 @@ export default function HomePage() {
               alt: "Bench exercise library organized by muscle group", blue: true,
               titleClass: "text-3xl sm:text-4xl font-semibold text-balance",
             },
-          ].map((card) => (
+          ].map((card, index) => (
             <article key={card.href} className={styles.featureCard}>
               <div className={styles.featureCopy}>
                 <Eyebrow>{card.eyebrow}</Eyebrow>
@@ -254,7 +198,7 @@ export default function HomePage() {
                 <div className="mt-8"><Button href={card.href} variant="ghost">{card.cta}</Button></div>
               </div>
               <div className={`${styles.phoneStage} ${card.blue ? styles.blueStage : styles.purpleStage}`}>
-                <Image src={`/screenshots/${card.image}-mockup.png`} alt={card.alt} width={card.image === "goals" ? 723 : 722} height={1500} sizes="(min-width: 640px) 270px, 225px" className={`${styles.cardPhone} ${card.blue ? styles.tiltRight : styles.tiltLeft}`} />
+                <Image src={`/screenshots/${card.image}-mockup.png`} alt={card.alt} width={card.image === "goals" ? 723 : 722} height={1500} sizes="(min-width: 640px) 270px, 225px" className={`${styles.cardPhone} ${index % 2 === 0 ? styles.tiltRight : styles.tiltLeft}`} />
               </div>
             </article>
           ))}
@@ -279,6 +223,62 @@ export default function HomePage() {
           </div>
         </div>
         <div className={styles.webStage}><BrowserPreview /></div>
+      </Section>
+
+      {/* ============== FEATURES GRID ============== */}
+      <Section className="py-28">
+        <div className="max-w-2xl">
+          <h2 className="mt-5 text-4xl sm:text-5xl font-bold tracking-tight text-balance text-ink-900">
+            Every feature a serious lifter needs.
+          </h2>
+          <p className="mt-5 text-lg text-ink-500 text-pretty">
+            From the first warm-up set to your next PR, Bench captures the data
+            and surfaces the insights that make your training compound.
+          </p>
+        </div>
+
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {features.map((f, i) => (
+            <Link
+              key={f.slug}
+              href={`/features/${f.slug}`}
+              className="group relative rounded-2xl border border-ink-100 bg-white shadow-card hover:shadow-cardHover hover:border-ink-200 transition-all p-6 overflow-hidden"
+            >
+              <div className="flex items-center justify-between">
+                <span className="inline-flex items-center justify-center w-11 h-11 rounded-xl bench-gradient text-white">
+                  <Icon name={f.icon} size={22} />
+                </span>
+                <span className="text-ink-400 text-xs">
+                  0{i + 1}
+                </span>
+              </div>
+              <h3 className="mt-5 text-xl font-semibold tracking-tight text-ink-900">
+                {f.name}
+              </h3>
+              <p className="mt-2 text-sm text-ink-500 leading-relaxed">
+                {f.description}
+              </p>
+              <div className="mt-6 inline-flex items-center gap-1.5 text-sm text-ink-700 group-hover:text-ink-900 transition-colors">
+                Learn more
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  className="transition-transform group-hover:translate-x-0.5"
+                >
+                  <path
+                    d="M3 7H11M11 7L7.5 3.5M11 7L7.5 10.5"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+            </Link>
+          ))}
+        </div>
       </Section>
 
       {/* ============== FAQ ============== */}
