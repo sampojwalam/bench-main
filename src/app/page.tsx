@@ -35,9 +35,9 @@ export default function HomePage() {
             className="mt-6 text-lg sm:text-xl text-ink-500 max-w-2xl mx-auto text-pretty animate-fade-up"
             style={{ animationDelay: "80ms" }}
           >
-            Bench is the most advanced strength-tracking app ever built. Log
-            every lift, set goals you'll actually hit, and discover workouts
-            from a community of serious lifters.
+            Log your lifts, understand your progress, create and share
+            workouts, set goals that matter to you, and join a community of
+            serious lifters.
           </p>
 
           <div
