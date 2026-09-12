@@ -1,0 +1,15 @@
+.page article h2 { margin: 20px 0; font-size: clamp(1.8rem,3.2vw,2.7rem); line-height: 1.16; }
+.typesPanel,.findPanel { border: 1px solid #e7e1ef; border-radius: 32px; overflow: hidden; margin-bottom: 24px; }
+.typesPanel { background: #f8f7fc; padding: 48px; }
+.typesIntro { max-width: 620px; }
+.typeGrid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 16px; margin-top: 34px; }
+.typeCard { border: 1px solid #e7e1ef; background: white; padding: 22px; border-radius: 20px; }
+.typeCard h3 { font-size: 21px; margin-top: 12px; }
+.typeCard p { font-size: 13px; margin-top: 12px; }
+.typeImage { width: 100%; height: 140px; object-fit: contain; }
+.example { display: block; font-size: 12px; color: #8662af; margin-top: 4px; }
+.findPanel { background: #faf8ff; }
+.findGrid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; }
+.customPhone { transform: rotate(3deg); }
+@media(max-width:1023px) { .typesPanel,.findPanel { border-radius: 24px; } .typesPanel { padding: 30px 24px; } .typeGrid { grid-template-columns: repeat(2,minmax(0,1fr)); } .findGrid { grid-template-columns: 1fr; } }
+@media(max-width:539px) { .typesPanel { padding: 30px 20px; } .typeGrid { grid-template-columns: 1fr; } .typeCard { display: grid; grid-template-columns: 68px minmax(0,1fr); column-gap: 12px; padding: 20px 12px; } .typeImage { grid-row: 1 / 4; height: 110px; align-self: center; } .typeCard h3 { margin: 0; font-size: 18px; } .typeCard p { margin-top: 8px; } }
