@@ -21,16 +21,16 @@
 
 .spotlightGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
 .featureCard { overflow: hidden; min-width: 0; border: 1px solid #e7e3ed; border-radius: 26px; background: #fbfafc; display: flex; flex-direction: column; box-shadow: 0 4px 16px -12px #3123421a; }
-.featureCopy { padding: 40px 42px 30px; position: relative; z-index: 1; }
-.phoneStage { position: relative; display: flex; justify-content: center; height: 390px; padding-top: 32px; overflow: hidden; margin-top: auto; }
+.featureCopy { padding: 36px 42px 24px; position: relative; z-index: 1; }
+.phoneStage { position: relative; display: flex; justify-content: center; height: 390px; padding-top: 16px; overflow: hidden; margin-top: auto; }
 .purpleStage { background: radial-gradient(ellipse at 50% 90%, #d9c7f1 0, #ece4f7 40%, transparent 75%); }
 .blueStage { background: radial-gradient(ellipse at 50% 90%, #c9d8f9 0, #e8eefb 40%, transparent 75%); }
 .cardPhone { width: 270px; height: auto; align-self: flex-start; filter: drop-shadow(0 18px 22px #33244529); transform-origin: center 55%; }
 .tiltRight { transform: rotate(6deg); }
 .tiltLeft { transform: rotate(-6deg); }
 .trackingCard { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; }
-.trackingCard .featureCopy { padding: 55px; align-self: center; }
-.trackingCard .phoneStage { margin-top: 0; height: 545px; padding-top: 50px; background: radial-gradient(ellipse at 50% 65%, #d8c5f3, #f2edf8 80%); }
+.trackingCard .featureCopy { padding: 48px; align-self: center; }
+.trackingCard .phoneStage { margin-top: 0; height: 545px; padding-top: 34px; background: radial-gradient(ellipse at 50% 65%, #d8c5f3, #f2edf8 80%); }
 .trackingCard .cardPhone { width: 270px; }
 .webStage { padding: 20px; border: 1px solid #e7e1f0; border-radius: 24px; background: linear-gradient(120deg, #eee7f8, #e4ebfb); }
 .faqList { border-top: 1px solid #ededf1; }
@@ -41,9 +41,9 @@
 .faqIcon { display: flex; flex-shrink: 0; color: #6b6b7d; transition: transform 180ms ease; }
 .faqItem[open] .faqIcon { transform: rotate(45deg); }
 .downloadCard { isolation: isolate; background: radial-gradient(ellipse at 0% 100%, #e8d7fa 0, transparent 58%), radial-gradient(ellipse at 100% 100%, #d9e2fc 0, transparent 58%), #faf8fe; box-shadow: 0 16px 50px -35px #55397640, inset 0 1px 0 #fff; }
-@media (max-width: 1024px) { .featureCopy { padding: 32px 30px 26px; }.trackingCard .featureCopy { padding: 35px; }.phoneStage { height: 340px; }.cardPhone { width: 240px; } }
-@media (max-width: 767px) { .spotlightGrid { grid-template-columns: 1fr; gap: 20px; }.trackingCard { grid-template-columns: 1fr; }.trackingCard .featureCopy { padding: 30px; }.trackingCard .phoneStage { height: 390px; padding-top: 32px; }.trackingCard .cardPhone { width: 240px; }.phoneStage { height: 370px; }.webStage { padding: 10px; border-radius: 16px; } }
-@media (max-width: 420px) { .featureCopy, .trackingCard .featureCopy { padding: 28px 24px; }.cardPhone, .trackingCard .cardPhone { width: 225px; }.phoneStage, .trackingCard .phoneStage { height: 340px; } }
+@media (max-width: 1024px) { .featureCopy { padding: 28px 30px 22px; }.trackingCard .featureCopy { padding: 30px; }.phoneStage { height: 340px; }.cardPhone { width: 240px; } }
+@media (max-width: 767px) { .spotlightGrid { grid-template-columns: 1fr; gap: 20px; }.trackingCard { grid-template-columns: 1fr; }.trackingCard .featureCopy { padding: 30px; }.trackingCard .phoneStage { height: 390px; padding-top: 16px; }.trackingCard .cardPhone { width: 240px; }.phoneStage { height: 370px; }.webStage { padding: 10px; border-radius: 16px; } }
+@media (max-width: 420px) { .featureCopy, .trackingCard .featureCopy { padding: 24px 24px; }.cardPhone, .trackingCard .cardPhone { width: 225px; }.phoneStage, .trackingCard .phoneStage { height: 340px; } }
 @media (prefers-reduced-motion: reduce) { .faqIcon { transition: none; } }
 
 .cardHeading { font-size: 30px; line-height: 1.2; font-weight: 600; }
@@ -75,8 +75,13 @@
 @media (min-width: 768px) {
   .featureCard:not(.trackingCard) .featureCopy { display: flex; flex: 1; flex-direction: column; }
   .featureCard:not(.trackingCard) .featureCopy > :first-child { align-self: flex-start; }
-  .featureCard:not(.trackingCard) .featureCopy > div:last-child { margin-top: auto; padding-top: 32px; }
+  .featureCard:not(.trackingCard) .featureCopy > div:last-child { margin-top: auto; padding-top: 24px; }
   .featureCard:not(.trackingCard) .phoneStage { flex-shrink: 0; }
 }
 
 .featureLabel { display: block; color: #73618d; font-size: 11px; font-weight: 600; letter-spacing: .12em; line-height: 1.6; text-transform: uppercase; }
+
+.featureCopy > h2, .featureCopy > h3 { margin-top: 16px; }
+.featureCopy > p { margin-top: 12px; }
+.featureCopy > div:last-child { margin-top: 24px; }
+@media (min-width: 768px) { .featureCard:not(.trackingCard) .featureCopy > div:last-child { margin-top: auto; } }
