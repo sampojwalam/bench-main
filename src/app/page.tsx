@@ -140,7 +140,7 @@ export default function HomePage() {
             <div className={styles.featureCopy}>
               <span className={styles.featureLabel}>02 / PROGRESS ANALYTICS</span>
               <h2 className={`${styles.cardHeading} mt-5 tracking-tight text-balance text-ink-900`}>
-                See the story behind <span className="bench-gradient-text">every session.</span>
+                See how your training adds up.
               </h2>
               <p className="mt-4 text-ink-500 leading-relaxed">
                 Follow strength trends, check multi-rep maxes, and see how
@@ -167,7 +167,7 @@ export default function HomePage() {
               alt: "Bench mobile app showing a community workout and its exercises", blue: true,
             },
             {
-              eyebrow: "Social", title: "Lift harder when you're not lifting alone.",
+              eyebrow: "Social", title: "You lift harder when you're not alone.",
               copy: "Share routines, exercises, completed sessions, and profiles in chat. Send public workout and profile links anyone can view.",
               href: "/features/social", cta: "Explore social features", image: "social",
               alt: "A direct message conversation between lifters in Bench", blue: false,
