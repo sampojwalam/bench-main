@@ -1,0 +1,26 @@
+/* Reuse the approved feature layout, with analytics-specific visuals. */
+.page article h2 {
+  margin: 20px 0;
+  font-size: clamp(1.8rem, 3.2vw, 2.7rem);
+  line-height: 1.16;
+}
+.page h1 { font-size: clamp(2.4rem, 3.4vw, 3.15rem); }
+.muscleStage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 54px 36px;
+  background: radial-gradient(ellipse at center, #e0defb, transparent 75%);
+}
+.muscleMap, .muscleDetail {
+  max-width: 94%;
+  height: auto;
+  border-radius: 22px;
+  box-shadow: 0 24px 55px #32286b30, 0 8px 18px #32286b12;
+}
+.muscleMap { width: 350px; transform: rotate(-3deg); }
+.muscleDetail { position: relative; width: 365px; margin-top: 22px; transform: rotate(3deg); }
+@media (max-width: 1023px) {
+  .page h1 { font-size: clamp(2.4rem, 8.3vw, 3.4rem); }
+  .muscleStage { padding: 12px 24px 42px; }
+}

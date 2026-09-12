@@ -1,3 +1,4 @@
+import { ProgressAnalyticsPage } from "@/components/features/ProgressAnalyticsPage";
 import { WorkoutTrackingPage } from "@/components/features/WorkoutTrackingPage";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -31,7 +32,9 @@ export function generateMetadata({
     title: f.name,
     description: f.slug === "workout-tracking"
       ? "Log your sets, follow your routine, and keep track of your rest with Bench. Unlimited workout tracking on iOS, Android, and the web."
-      : f.tagline,
+      : f.slug === "analytics"
+        ? "Track your strength, multi-rep maxes, workout totals, and training volume by muscle group with Bench Progress Analytics."
+        : f.tagline,
   };
 }
 
@@ -43,6 +46,7 @@ export default function FeaturePage({
   const feature = featureBySlug(params.slug);
   if (!feature) notFound();
   if (feature.slug === "workout-tracking") return <WorkoutTrackingPage />;
+  if (feature.slug === "analytics") return <ProgressAnalyticsPage />;
 
   const idx = features.findIndex((f) => f.slug === feature.slug);
   const next = features[(idx + 1) % features.length];
