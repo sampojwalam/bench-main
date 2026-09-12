@@ -13,7 +13,7 @@ for constant, default_type in [('EXERCISE_DATA', None), ('TIMED_EXERCISE_DATA','
     match = re.search(r'\b' + constant + r'\s*=\s*(\[.*?\]);', text, re.S)
     data = json.loads(re.sub(r',\s*([}\]])', r'\1', match.group(1)))
     originals.extend(data)
-    entries.extend({'id':x['id'], 'name':x['name'], 'type':default_type or ('weighted' if x['isWeighted'] else 'bodyweight'), 'muscles':[m for m in x['category'] if m != 'cardio']} for x in data)
+    entries.extend({'id':x['id'], 'imageUrl':f"/images/exercise-thumbnails/{x['id']}.webp", 'name':x['name'], 'type':default_type or ('weighted' if x['isWeighted'] else 'bodyweight'), 'muscles':[m for m in x['category'] if m != 'cardio']} for x in data)
 assert len({x['id'] for x in entries}) == len(entries)
 entries.sort(key=lambda x:x['name'])
 payload = json.dumps(entries,separators=(',',':')).encode()

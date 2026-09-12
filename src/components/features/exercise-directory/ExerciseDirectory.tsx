@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import styles from "./ExerciseDirectory.module.css";
 
-type Exercise = { id: string; name: string; type: string; muscles: string[] };
+type Exercise = { id: string; name: string; type: string; muscles: string[]; imageUrl?: string };
 const labels: Record<string, string> = { weighted: "Weighted", bodyweight: "Bodyweight", timed: "Timed", cardio: "Cardio" };
 const pageSize = 12;
 
@@ -49,7 +49,7 @@ export default function ExerciseDirectory() {
         <label>Sort by<select value={sort} onChange={event => { setSort(event.target.value); setPage(0); }}><option value="asc">Name: A–Z</option><option value="desc">Name: Z–A</option></select></label>
       </div>
       <div className={styles.resultBar}><p role="status" aria-live="polite">{results.length} of {exercises.length} exercises{totalPages > 0 && ` · Page ${page + 1} of ${totalPages}`}</p><button className={styles.reset} onClick={reset}>Reset filters</button></div>
-      {visible.length ? <ul className={styles.results}>{visible.map(exercise => <li key={exercise.id}><span className={styles.type}>{labels[exercise.type]}</span><h3>{exercise.name}</h3><p>{exercise.muscles.length ? exercise.muscles.join(" · ") : "Cardio"}</p></li>)}</ul> : <div className={styles.empty}><h3>No matching exercises</h3><p>Try a broader search or reset your filters. You can also create custom exercises in Bench.</p></div>}
+      {visible.length ? <ul className={styles.results}>{visible.map(exercise => <li key={exercise.id}><div className={styles.thumbnail}>{exercise.imageUrl && <img src={exercise.imageUrl} alt="" width={80} height={60} loading="lazy" decoding="async" onError={event => { event.currentTarget.hidden = true; }} />}</div><div className={styles.resultCopy}><span className={styles.type}>{labels[exercise.type]}</span><h3>{exercise.name}</h3><p>{exercise.muscles.length ? exercise.muscles.join(" · ") : "Cardio"}</p></div></li>)}</ul> : <div className={styles.empty}><h3>No matching exercises</h3><p>Try a broader search or reset your filters. You can also create custom exercises in Bench.</p></div>}
       {totalPages > 1 && <nav className={styles.pagination} aria-label="Exercise results pages"><button className={styles.button} disabled={page === 0} onClick={() => setPage(page - 1)}>← Previous</button><span>{page + 1} / {totalPages}</span><button className={styles.button} disabled={page + 1 >= totalPages} onClick={() => setPage(page + 1)}>Next →</button></nav>}
     </section>
   );
