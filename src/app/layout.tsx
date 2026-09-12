@@ -62,8 +62,9 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans bg-white text-ink-900 min-h-screen flex flex-col">
+        <a href="#main-content" className="skip-link">Skip to content</a>
         <Navbar />
-        <main className="flex-1 pt-16">{children}</main>
+        <main id="main-content" tabIndex={-1} className="flex-1 pt-16 focus:outline-none">{children}</main>
         <Footer />
       </body>
     </html>

@@ -94,3 +94,30 @@
   color: #0b0b12;
   font-weight: 600;
 }
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 100;
+  padding: 12px 18px;
+  border-radius: 10px;
+  background: #0b0b12;
+  color: #fff;
+  font-weight: 600;
+  transform: translateY(calc(-100% - 16px));
+}
+.skip-link:focus {
+  transform: translateY(0);
+  outline: 3px solid #ab55ff;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
