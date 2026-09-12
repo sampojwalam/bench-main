@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Section, Eyebrow } from "@/components/Section";
 import { Button } from "@/components/Button";
 import { StoreButtonGroup } from "@/components/StoreButtons";
@@ -226,7 +227,7 @@ export default function HomePage() {
           <div>
             <Eyebrow>Frequently asked questions</Eyebrow>
             <h2 className="mt-5 text-4xl sm:text-5xl font-bold tracking-tight text-balance text-ink-900">A little more about Bench.</h2>
-            <p className="mt-5 text-ink-500">Need a hand? <a className="underline underline-offset-4 hover:text-ink-900" href="mailto:support@benchgymlog.com">Get in touch.</a></p>
+            <p className="mt-5 text-ink-500">Need a hand? <Link className="underline underline-offset-4 hover:text-ink-900" href="/contact">Get in touch.</Link></p>
           </div>
           <div className={styles.faqList}>
             {[

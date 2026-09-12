@@ -107,9 +107,9 @@ export function Footer() {
                 </li>
               ))}
               <li>
-                <a href="mailto:help@benchgymlog.com" className="text-sm text-ink-700 hover:text-ink-900 transition-colors">
-                  Contact support
-                </a>
+                <Link href="/contact" className="text-sm text-ink-700 hover:text-ink-900 transition-colors">
+                  Contact
+                </Link>
               </li>
             </ul>
           </div>
