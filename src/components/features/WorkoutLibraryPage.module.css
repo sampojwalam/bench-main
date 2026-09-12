@@ -1,0 +1,26 @@
+.page article h2 { margin: 20px 0; font-size: clamp(1.8rem,3.2vw,2.7rem); line-height: 1.16; }
+.previewPhone { transform: rotate(3deg); }
+.shareCard { border: 1px solid #e5dff0; border-radius: 32px; overflow: hidden; background: #faf8ff; }
+.shareIntro { display: grid; grid-template-columns: 1fr 1fr; gap: 54px; padding: 54px 54px 28px; align-items: center; }
+.webStage { padding: 20px 54px 54px; background: radial-gradient(ellipse at bottom,#e1ddfa,transparent 75%); }
+.browserFrame { overflow: hidden; border: 1px solid #ddd9e6; border-radius: 15px; background: white; box-shadow: 0 24px 55px #32286b25; }
+.browserBar { height: 42px; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0 16px; background: #fcfbfe; border-bottom: 1px solid #e9e6ee; }
+.dots { display: flex; gap: 5px; }
+.dots i { display: block; width: 8px; height: 8px; border-radius: 50%; background: #d4cedf; }
+.address { font-size: 11px; color: #70687d; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.barSpacer { width: 34px; }
+.webImage { width: 100%; height: auto; }
+@media(max-width:1023px) {
+ .shareCard { border-radius: 24px; }
+ .shareIntro { grid-template-columns: 1fr; gap: 0; padding: 30px 24px 16px; }
+ .webStage { padding: 12px 20px 32px; }
+ .browserBar { height: 34px; padding: 0 10px; gap: 10px; }
+ .address { font-size: 9px; }
+ .barSpacer { display: none; }
+}
+@media(max-width:379px) {
+ .shareIntro { padding-inline: 20px; }
+ .webStage { padding-inline: 10px; }
+ .dots { display: none; }
+ .browserBar { justify-content: center; }
+}

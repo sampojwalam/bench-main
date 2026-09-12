@@ -1,3 +1,4 @@
+import { WorkoutLibraryPage } from "@/components/features/WorkoutLibraryPage";
 import { ProgressAnalyticsPage } from "@/components/features/ProgressAnalyticsPage";
 import { WorkoutTrackingPage } from "@/components/features/WorkoutTrackingPage";
 import { notFound } from "next/navigation";
@@ -34,7 +35,9 @@ export function generateMetadata({
       ? "Log your sets, follow your routine, and keep track of your rest with Bench. Unlimited workout tracking on iOS, Android, and the web."
       : f.slug === "analytics"
         ? "Track your strength, multi-rep maxes, workout totals, and training volume by muscle group with Bench Progress Analytics."
-        : f.tagline,
+        : f.slug === "workout-library"
+          ? "Build custom workout routines, explore public workouts, save your favorites, and share a workout link anyone can view without logging in."
+          : f.tagline,
   };
 }
 
@@ -47,6 +50,7 @@ export default function FeaturePage({
   if (!feature) notFound();
   if (feature.slug === "workout-tracking") return <WorkoutTrackingPage />;
   if (feature.slug === "analytics") return <ProgressAnalyticsPage />;
+  if (feature.slug === "workout-library") return <WorkoutLibraryPage />;
 
   const idx = features.findIndex((f) => f.slug === feature.slug);
   const next = features[(idx + 1) % features.length];
