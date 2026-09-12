@@ -78,3 +78,5 @@
   .featureCard:not(.trackingCard) .featureCopy > div:last-child { margin-top: auto; padding-top: 32px; }
   .featureCard:not(.trackingCard) .phoneStage { flex-shrink: 0; }
 }
+
+.featureLabel { display: block; color: #73618d; font-size: 11px; font-weight: 600; letter-spacing: .12em; line-height: 1.6; text-transform: uppercase; }
