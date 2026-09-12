@@ -1,0 +1,12 @@
+.title { font-size: clamp(36px, 7vw, 60px); line-height: 1.1; }
+.actions { gap: 12px; }
+.actions a, .platformCard a { min-height: 48px; white-space: nowrap; }
+.actions > div { gap: 12px; }
+.actions a { padding-inline: 12px !important; flex-shrink: 0; }
+.phoneStage { display: flex; justify-content: center; width: 100%; max-width: 480px; margin-inline: auto; padding: 28px 24px; border: 1px solid #e8e2f1; border-radius: 26px; background: radial-gradient(ellipse at 20% 75%, #e3d4f8, transparent 65%), radial-gradient(ellipse at 95% 30%, #dce6fc, transparent 65%), #faf8fd; }
+.phone { width: 220px; max-width: 100%; height: auto; transform: rotate(5deg); filter: drop-shadow(0 18px 18px #33244526); }
+@media (min-width: 1024px) {
+  .actions { flex-wrap: wrap; justify-content: flex-start !important; }
+  .phoneStage { padding: 36px 28px; }
+  .phone { width: 280px; }
+}
