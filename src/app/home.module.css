@@ -71,3 +71,10 @@
 @media (max-width: 379px) { .downloadCard .heroButtons > div > a { padding-inline: 6px; } }
 
 @media (max-width: 640px) { .hero .heroStage { margin-top: 32px; } }
+
+@media (min-width: 768px) {
+  .featureCard:not(.trackingCard) .featureCopy { display: flex; flex: 1; flex-direction: column; }
+  .featureCard:not(.trackingCard) .featureCopy > :first-child { align-self: flex-start; }
+  .featureCard:not(.trackingCard) .featureCopy > div:last-child { margin-top: auto; padding-top: 32px; }
+  .featureCard:not(.trackingCard) .phoneStage { flex-shrink: 0; }
+}

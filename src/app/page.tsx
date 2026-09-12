@@ -246,7 +246,7 @@ export default function HomePage() {
       </Section>
 
       {/* ============== FINAL CTA ============== */}
-      <Section className="py-28">
+      <Section className="pt-14 pb-20 sm:py-28">
         <div className={`${styles.downloadCard} relative overflow-hidden rounded-[2rem] border border-ink-200 px-5 py-10 sm:px-8 sm:py-16 md:p-16 text-center`}>
           <h2 className="text-4xl sm:text-6xl font-bold tracking-tight text-balance text-ink-900">
             Make your next set count.
