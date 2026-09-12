@@ -1,0 +1,16 @@
+.page h1 { font-size: clamp(2.3rem,3.3vw,3rem); }
+.page article h2 { margin: 20px 0; font-size: clamp(1.8rem,3.2vw,2.7rem); line-height: 1.16; }
+.chatStage { display: flex; flex-direction: column; align-items: center; gap: 28px; padding: 54px 40px; background: radial-gradient(ellipse at center,#e2ddf7,transparent 72%); }
+.exerciseCard { width: 240px; max-width: 74%; height: auto; transform: rotate(3deg) translateX(14px); filter: drop-shadow(0 18px 22px #32286b26); }
+.workoutCard { width: 250px; max-width: 78%; height: auto; transform: rotate(-3deg) translateX(-10px); filter: drop-shadow(0 22px 26px #32286b26); }
+.previewPhone { transform: rotate(3deg); }
+.linkDetail { display: flex; align-items: flex-start; gap: 16px; margin-top: 26px; }
+.linkDetail > span { display: grid; place-items: center; width: 40px; height: 40px; flex-shrink: 0; border-radius: 12px; color: #895bc1; background: #eee8f8; }
+.linkDetail strong { font-size: 14px; }
+.linkDetail p { margin-top: 6px; font-size: 14px; }
+.page .note { margin-top: 18px; font-size: 12px; color: #85858e; }
+@media(max-width:1023px) { .page h1 { font-size: clamp(2.65rem,8vw,3.7rem); } .chatStage { padding: 20px 30px 42px; } }
+@media(max-width:379px) { .chatStage { padding-inline: 24px; gap: 22px; } .linkDetail { gap: 12px; } }
+
+.exampleLinks { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; margin-top: 16px; }
+.exampleLinks a { margin-top: 0; }
