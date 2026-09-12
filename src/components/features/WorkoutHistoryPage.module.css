@@ -1,0 +1,18 @@
+.page article h2 { margin: 20px 0; font-size: clamp(1.8rem,3.2vw,2.7rem); line-height: 1.16; }
+.viewsPanel { padding: 48px; border: 1px solid #e7e1ef; border-radius: 32px; background: #f8f7fc; margin-bottom: 24px; overflow: hidden; }
+.intro { max-width: 630px; }
+.viewsGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 36px; }
+.view { display: flex; flex-direction: column; align-items: center; border-radius: 24px; padding: 30px 30px 36px; background: linear-gradient(145deg,#fff,#f1edfa); border: 1px solid #e7e1ef; }
+.view:last-child { background: linear-gradient(145deg,#fff,#edf1fc); }
+.viewCopy { width: 100%; margin-bottom: 28px; }
+.viewCopy > span { color: #8b60c0; }
+.viewCopy h3 { font-size: 24px; margin: 12px 0; }
+.viewCopy p { font-size: 14px; max-width: 350px; }
+.calendarPhone,.listPhone { width: 240px; max-width: 92%; height: auto; margin-top: auto; filter: drop-shadow(10px 18px 18px #29214726); }
+.calendarPhone { transform: rotate(-3deg); }
+.listPhone,.editPhone { transform: rotate(3deg); }
+.detailStage { padding: 54px 40px; display: flex; justify-content: center; background: radial-gradient(ellipse at center,#e1def7,transparent 72%); }
+.detailCrop { width: 350px; max-width: 94%; height: auto; border-radius: 16px; transform: rotate(-3deg); box-shadow: 0 24px 50px #32286b26; }
+.page .premiumNote { margin-top: 24px; font-size: 12px; color: #85858e; }
+@media(max-width:1023px) { .viewsPanel { padding: 30px 24px; border-radius: 24px; } .view { padding: 24px 20px 32px; } .detailStage { padding: 16px 30px 42px; } }
+@media(max-width:639px) { .viewsGrid { grid-template-columns: 1fr; gap: 18px; } .calendarPhone,.listPhone { width: 210px; } .viewsPanel { padding: 30px 20px; } .detailStage { padding-inline: 24px; } }

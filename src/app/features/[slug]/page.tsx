@@ -1,3 +1,4 @@
+import { WorkoutHistoryPage } from "@/components/features/WorkoutHistoryPage";
 import { GoalsPage } from "@/components/features/GoalsPage";
 import { ExerciseLibraryPage } from "@/components/features/ExerciseLibraryPage";
 import { WorkoutLibraryPage } from "@/components/features/WorkoutLibraryPage";
@@ -43,7 +44,9 @@ export function generateMetadata({
             ? "Explore over 400 exercises for weighted, bodyweight, timed, and cardio training. Search the library and build custom exercises with Bench."
             : f.slug === "goals"
               ? "Set workout frequency, exercise, and muscle group goals with Bench. Build consistent habits, work toward strength milestones, and follow your goal history."
-              : f.tagline,
+              : f.slug === "history"
+                ? "Browse your complete workout history with Bench. Explore calendar and list views, revisit every logged set, and edit past sessions with Premium."
+                : f.tagline,
   };
 }
 
@@ -60,6 +63,8 @@ export default function FeaturePage({
   if (feature.slug === "exercise-library") return <ExerciseLibraryPage />;
 
   if (feature.slug === "goals") return <GoalsPage />;
+
+  if (feature.slug === "history") return <WorkoutHistoryPage />;
 
   const idx = features.findIndex((f) => f.slug === feature.slug);
   const next = features[(idx + 1) % features.length];
