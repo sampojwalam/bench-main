@@ -18,7 +18,7 @@ export function Footer() {
   return (
     <footer className="relative border-t border-ink-100 bg-ink-50">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 py-16">
-        <div className="grid grid-cols-2 gap-x-5 gap-y-9 sm:grid-cols-3 sm:gap-10 lg:grid-cols-[1.6fr_1fr_0.75fr_1fr] lg:gap-8">
+        <div className="grid grid-cols-2 gap-x-5 gap-y-9 sm:grid-cols-3 sm:gap-10 lg:grid-cols-[1.6fr_0.75fr_1fr_1fr] lg:gap-8">
           <div className="col-span-2 sm:col-span-3 lg:col-span-1">
             <Logo />
             <p className="mt-5 text-sm text-ink-500 max-w-xs leading-relaxed">
@@ -80,25 +80,7 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="row-span-2 sm:row-span-1">
-            <h4 className="text-[11px] uppercase tracking-[0.12em] text-ink-400 font-semibold mb-4">
-              Features
-            </h4>
-            <ul className="space-y-3">
-              {features.map((f) => (
-                <li key={f.slug}>
-                  <Link
-                    href={`/features/${f.slug}`}
-                    className="text-sm text-ink-700 hover:text-ink-900 transition-colors"
-                  >
-                    {f.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="col-start-2 sm:col-start-auto">
+          <div className="min-w-0">
             <h4 className="text-[11px] uppercase tracking-[0.12em] text-ink-400 font-semibold mb-4">
               Product
             </h4>
@@ -132,7 +114,25 @@ export function Footer() {
             </ul>
           </div>
 
-          <div className="col-start-2 sm:col-start-auto">
+          <div className="row-span-2 sm:row-span-1">
+            <h4 className="text-[11px] uppercase tracking-[0.12em] text-ink-400 font-semibold mb-4">
+              Features
+            </h4>
+            <ul className="space-y-3">
+              {features.map((f) => (
+                <li key={f.slug}>
+                  <Link
+                    href={`/features/${f.slug}`}
+                    className="text-sm text-ink-700 hover:text-ink-900 transition-colors"
+                  >
+                    {f.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="col-start-1 sm:col-start-auto">
             <h4 className="text-[11px] uppercase tracking-[0.12em] text-ink-400 font-semibold mb-4">
               Legal
             </h4>
