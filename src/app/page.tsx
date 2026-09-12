@@ -206,13 +206,13 @@ export default function HomePage() {
           <div>
             <Eyebrow>Meet Bench on the web</Eyebrow>
             <h2 className="mt-5 text-4xl sm:text-5xl font-bold tracking-tight text-balance text-ink-900">
-              Your training.<br /><span className="bench-gradient-text">A bigger picture.</span>
+              See the<br /><span className="bench-gradient-text">bigger picture.</span>
             </h2>
           </div>
           <div>
             <p className="text-lg text-ink-500 text-pretty">
               Review your history, build your routines, and explore your progress
-              with room to breathe. Sign in with the same account you use at the gym.
+              with room to breathe. Sign in with the same account you use on mobile.
             </p>
             <div className="mt-7"><Button href="https://app.benchgymlog.com/signup" external variant="ghost">Get Started on Web</Button></div>
           </div>
@@ -230,10 +230,12 @@ export default function HomePage() {
           </div>
           <div className={styles.faqList}>
             {[
-              ["Can I use Bench for free?", "Yes. Create a free account and start logging workouts. Premium unlocks additional features and higher limits, including detailed volume analytics and more saved workouts and goals. Current options are available inside the app."],
+              ["Can I use Bench for free?", "Yes. Bench is built to give most lifters everything they need for free, including unlimited workout logging, your complete workout history, and detailed exercise stats. Premium is an optional upgrade for those who want a few extras."],
               ["Can I use the same account on mobile and web?", "Yes. Sign in with the same Bench account on iOS, Android, and the web to access your saved workouts, goals, and training history across your devices."],
               ["Can I create my own workout routines?", "Yes. Choose exercises, plan your sets and rep ranges, and save the routine to your library. You can also explore public workouts shared by other lifters."],
-              ["Do I have to share my workouts?", "No. Publishing routines and connecting with other lifters are optional. You can use Bench simply to track your own training."],
+              ["Do I have to share my workouts?", "No. You can create private workout routines that are only visible to you. Publishing routines and connecting with other lifters are optional."],
+              ["Can I track cardio with Bench?", "Yes. Bench allows you to track the duration and calories burned for several popular forms of cardio. You can also create your own custom cardio exercises and include them in your routine."],
+              ["Can I create my own exercises?", "Yes. Create custom exercises and track your progress over time. Bench supports weighted, bodyweight, time-based, and cardio exercises."],
               ["Is Bench just for experienced lifters?", "No. Start with a simple workout log whether you’re learning your first lifts or following an established program. Explore stats and goals as your training history grows."],
             ].map(([question, answer]) => (
               <details key={question} className={styles.faqItem}>
