@@ -10,3 +10,20 @@
   .phoneStage { padding: 36px 28px; }
   .phone { width: 280px; }
 }
+
+.qrPanel { display: none; }
+@media (min-width: 768px) { .qrPanel { display: block; } }
+.qrTrigger { display: inline-flex; align-items: center; gap: 6px; min-height: 48px; padding: 0 10px; border: 1px solid #d4d4dc; border-radius: 12px; background: white; color: #3a3a4a; font-size: 12px; font-weight: 600; white-space: nowrap; }
+.qrTrigger:hover { color: #715af5; }
+.qrTrigger:focus-visible, .qrDialog button:focus-visible, .qrDialog a:focus-visible { outline: 2px solid #715af5; outline-offset: 4px; border-radius: 6px; }
+.qrDialog { width: min(380px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); overflow-y: auto; margin: auto; padding: 52px 28px 28px; border: 1px solid #e8e2f1; border-radius: 24px; background: #faf8fd; text-align: center; box-shadow: 0 24px 80px #21133430; }
+.qrDialog::backdrop { background: #15102155; backdrop-filter: blur(4px); }
+.qrClose { position: absolute; right: 12px; top: 10px; display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; color: #6b6b7d; }
+.qrClose:hover { background: #ede9f4; }
+.qrSelector { display: flex; gap: 4px; background: #eeebf3; padding: 4px; border-radius: 12px; margin: 20px 0 12px; }
+.qrSelector button { flex: 1; min-height: 40px; border-radius: 9px; font-size: 14px; color: #6b6b7d; }
+.qrSelector button[aria-pressed="true"] { background: white; color: #0b0b12; font-weight: 600; box-shadow: 0 1px 4px #21133412; }
+.qrCode { width: fit-content; margin: 0 auto 12px; border: 1px solid #e8e2f1; border-radius: 14px; background: white; padding: 4px; }
+.qrCode svg { display: block; max-width: 100%; height: auto; }
+
+.platformActions { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }

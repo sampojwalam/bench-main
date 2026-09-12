@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Icon } from "@/components/Icon";
 import styles from "./download.module.css";
+import { DownloadQRCodes } from "./DownloadQRCodes";
 import { Section, Eyebrow } from "@/components/Section";
 import {
   AppStoreButton,
@@ -93,7 +94,10 @@ export default function DownloadPage() {
                 <h3 className="text-xl font-semibold text-ink-900">{c.title}</h3>
               </div>
               <p className="mt-4 text-ink-500 leading-relaxed flex-1">{c.copy}</p>
-              <div className="mt-6">{c.btn}</div>
+              <div className={`${styles.platformActions} mt-6`}>
+                {c.btn}
+                {(c.title === "iOS" || c.title === "Android") && <DownloadQRCodes initialPlatform={c.title} />}
+              </div>
             </article>
           ))}
         </div>
