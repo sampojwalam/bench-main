@@ -62,7 +62,7 @@
  .heroCopy h1 { font-size: clamp(2.65rem,9vw,3.7rem); }
  .featureIcon { margin-bottom: 20px; }
  .heroCopy .lead { margin-top: 22px; }
- .heroStage { max-width: 480px; width: 100%; margin: auto; }
+ .heroStage { width: 100%; margin: 0; }
  .phone { width: 220px; }
  .storySection { padding-top: 8px; }
  .routinePanel,.setPanel,.restPanel { grid-template-columns: 1fr; border-radius: 24px; }

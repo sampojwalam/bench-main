@@ -16,7 +16,7 @@ export function WorkoutLibraryPage() {
         <Link href="/features" className={styles.back}>← All features</Link>
         <div className={styles.heroGrid}>
           <div className={styles.heroCopy}>
-            <div className={styles.featureIcon} aria-hidden="true"><Icon name="fitness_center" size={28} /></div>
+            <div className={styles.featureIcon} aria-hidden="true"><Icon name="explore" size={28} /></div>
             <h1>Workout Library</h1>
             <p className={styles.lead}>A good workout is worth keeping.</p>
             <p>Build routines around the way you train, find new ideas from other lifters, and share your favorites with anyone.</p>
