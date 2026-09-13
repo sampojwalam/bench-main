@@ -41,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={jakarta.variable}>
+    <html lang="en" className={jakarta.variable} data-scroll-behavior="smooth">
       <body className="font-sans bg-white text-ink-900 min-h-screen flex flex-col">
         <a href="#main-content" className="skip-link">Skip to content</a>
         <Navbar />
