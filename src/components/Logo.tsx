@@ -17,7 +17,7 @@ export function Logo({
     >
       <Image
         src="/icons/bench_rounded.png"
-        alt="Bench Gym Log"
+        alt={showWordmark ? "" : "Bench Gym Log"}
         width={size}
         height={size}
         priority

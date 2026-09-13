@@ -81,9 +81,9 @@ export function Footer() {
           </div>
 
           <div className="min-w-0">
-            <h4 className="text-[11px] uppercase tracking-[0.12em] text-ink-400 font-semibold mb-4">
+            <h2 className="text-[11px] uppercase tracking-[0.12em] text-ink-400 font-semibold mb-4">
               Product
-            </h4>
+            </h2>
             <ul className="space-y-3">
               {productLinks.map((l) => (
                 <li key={l.label}>
@@ -115,9 +115,9 @@ export function Footer() {
           </div>
 
           <div className="row-span-2 sm:row-span-1">
-            <h4 className="text-[11px] uppercase tracking-[0.12em] text-ink-400 font-semibold mb-4">
+            <h2 className="text-[11px] uppercase tracking-[0.12em] text-ink-400 font-semibold mb-4">
               Features
-            </h4>
+            </h2>
             <ul className="space-y-3">
               {features.map((f) => (
                 <li key={f.slug}>
@@ -133,9 +133,9 @@ export function Footer() {
           </div>
 
           <div className="col-start-1 sm:col-start-auto">
-            <h4 className="text-[11px] uppercase tracking-[0.12em] text-ink-400 font-semibold mb-4">
+            <h2 className="text-[11px] uppercase tracking-[0.12em] text-ink-400 font-semibold mb-4">
               Legal
-            </h4>
+            </h2>
             <ul className="space-y-3">
               {legalLinks.map((l) => (
                 <li key={l.label}>

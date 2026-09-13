@@ -6,6 +6,7 @@ This marketing site is a static Next.js export. Firebase Hosting serves pre-rend
 
 - Firebase project: `bench-331ff`
 - Dedicated Hosting site: `bench-gym-log-main`
+- Live Firebase URL: https://bench-gym-log-main.web.app (deployed September 12, 2026; indexing allowed)
 - Prelaunch preview: https://bench-gym-log-main--prelaunch-az00n9hb.web.app
 - Preview expiry: October 12, 2026; redeploy to renew.
 - Existing app Hosting sites and the `bench-web` App Hosting backend are separate and must not be overwritten.
