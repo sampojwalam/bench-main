@@ -9,10 +9,11 @@ css = get('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;5
 urls = re.findall(r'src: url\(([^)]+)', css)
 (out/'jakarta-latin.woff2').write_bytes(get(urls[-1]))
 text = '\n'.join(p.read_text() for p in (root/'src').rglob('*') if p.suffix in ['.tsx','.ts'])
-names = sorted(set(re.findall(r'(?:name=|icon: ?)["\']([a-z_]+)["\']',text)))
+names = sorted(set(re.findall(r'(?:name=|icon: ?)["\']([a-z_][a-z0-9_]*)["\']',text)))
 url='https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0&icon_names='+','.join(names)+'&display=block'
 css=get(url).decode()
 fonturl=re.search(r'src: url\(([^)]+)',css)[1]
 (out/'material-symbols.woff2').write_bytes(get(fonturl))
-(out/'material-symbols.css').write_text(css.replace(fonturl,'./material-symbols.woff2'))
+# Font-face generation/preloading is handled by next/font/local in layout.tsx.
+# Keep the hand-maintained icon class styles unchanged.
 print('Prepared Jakarta weights and',len(names),'icon glyphs')

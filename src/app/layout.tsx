@@ -9,6 +9,17 @@ const jakarta = localFont({
   weight: "400 800",
   display: "swap",
 });
+// Preload the existing icon font without a text fallback or changed glyph metrics.
+const materialSymbols = localFont({
+  src: "../assets/fonts/material-symbols.woff2",
+  variable: "--font-material-symbols",
+  weight: "400",
+  style: "normal",
+  display: "block",
+  preload: true,
+  adjustFontFallback: false,
+  fallback: [],
+});
 import { SITE_URL, HOME_TITLE, HOME_DESCRIPTION } from "@/lib/metadata";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -41,7 +52,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={jakarta.variable} data-scroll-behavior="smooth">
+    <html lang="en" className={`${jakarta.variable} ${materialSymbols.variable}`} data-scroll-behavior="smooth">
       <body className="font-sans bg-white text-ink-900 min-h-screen flex flex-col">
         <a href="#main-content" className="skip-link">Skip to content</a>
         <Navbar />
