@@ -85,3 +85,9 @@
 .featureCopy > p { margin-top: 12px; }
 .featureCopy > div:last-child { margin-top: 24px; }
 @media (min-width: 768px) { .featureCard:not(.trackingCard) .featureCopy > div:last-child { margin-top: auto; } }
+
+/* Keep device labels on one line before the three-column layout has room. */
+@media (max-width: 767px) {
+  .deviceStrip { grid-template-columns: 1fr; gap: 20px; padding: 28px 0; }
+  .deviceStrip > p { margin-bottom: 2px; }
+}

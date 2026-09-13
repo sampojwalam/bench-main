@@ -114,10 +114,10 @@ export default function HomePage() {
           <p className="font-semibold text-ink-900">One Account. All Your Devices.</p>
           {[
             { icon: "phone_iphone", text: "Made for the gym floor" },
-            { icon: "desktop_windows", text: "More room on web" },
+            { icon: "desktop_windows", text: "See the bigger picture" },
             { icon: "done_all", text: "Automatically synced" },
           ].map(({ icon, text }) => (
-            <div key={text} className="flex items-center gap-3 text-ink-500"><span aria-hidden="true" className="text-ink-400"><Icon name={icon} size={22} /></span><span>{text}</span></div>
+            <div key={text} className="flex items-center gap-3 text-ink-500"><span aria-hidden="true" className="inline-flex shrink-0 items-center leading-none text-ink-400"><Icon name={icon} size={22} /></span><span>{text}</span></div>
           ))}
         </div>
       </Section>
