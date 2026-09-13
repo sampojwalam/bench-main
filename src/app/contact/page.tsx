@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { Section } from "@/components/Section";
 import { Icon } from "@/components/Icon";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description:
-    "Get in touch with Bench Gym Log for support, product questions, feature requests, and collaborations. Email help@benchgymlog.com.",
-};
+export const metadata = pageMetadata(
+  "Contact",
+  "Get in touch with Bench Gym Log for support, product questions, feature requests, and collaborations. Email help@benchgymlog.com.",
+  "/contact",
+);
 
 export default function ContactPage() {
   return (

@@ -1,3 +1,5 @@
+import { SiteStructuredData } from "@/components/SiteStructuredData";
+import { pageMetadata, HOME_TITLE, HOME_DESCRIPTION } from "@/lib/metadata";
 import Image from "next/image";
 import Link from "next/link";
 import { Section, Eyebrow } from "@/components/Section";
@@ -5,6 +7,8 @@ import { Button } from "@/components/Button";
 import { StoreButtonGroup } from "@/components/StoreButtons";
 import styles from "./home.module.css";
 import { Icon } from "@/components/Icon";
+
+export const metadata = pageMetadata(HOME_TITLE, HOME_DESCRIPTION, "/");
 
 function BrowserPreview({ hero = false }: { hero?: boolean }) {
   return (
@@ -22,6 +26,7 @@ function BrowserPreview({ hero = false }: { hero?: boolean }) {
 export default function HomePage() {
   return (
     <>
+      <SiteStructuredData />
       {/* ============== HERO ============== */}
       <section className={`${styles.hero} relative overflow-hidden pb-24`} >
         {/* Background glow */}

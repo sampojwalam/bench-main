@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
 import { Icon } from "@/components/Icon";
 import styles from "./download.module.css";
@@ -11,11 +11,11 @@ import {
   StoreButtonGroup,
 } from "@/components/StoreButtons";
 
-export const metadata: Metadata = {
-  title: "Download",
-  description:
-    "Get Bench Gym Log on iOS, Android, or use it instantly on the web. Track workouts for free and keep your training in sync across devices.",
-};
+export const metadata = pageMetadata(
+  "Download for iOS & Android",
+  "Get Bench Gym Log on iOS, Android, or use it instantly on the web. Track workouts for free and keep your training in sync across devices.",
+  "/download",
+);
 
 export default function DownloadPage() {
   return (

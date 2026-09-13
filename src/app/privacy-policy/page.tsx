@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { LegalLayout } from "@/components/LegalLayout";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description:
-    "How Bench Gym Log collects, uses, and protects your information.",
-};
+export const metadata = pageMetadata(
+  "Privacy Policy",
+  "How Bench Gym Log collects, uses, and protects your information.",
+  "/privacy-policy",
+);
 
 export default function PrivacyPolicy() {
   return (
@@ -140,9 +140,9 @@ export default function PrivacyPolicy() {
           controls. A private routine can be shared directly in chat without
           publishing it.
         </li>
-        <li>
+        <li id="account-deletion" className="scroll-mt-28">
           <strong>Account deletion.</strong> You can delete your account
-          from Settings. For deletion of all associated personal data, email
+          from Settings by choosing Delete Account and confirming the dialog. For deletion of all associated personal data, email
           <a href="mailto:help@benchgymlog.com"> help@benchgymlog.com</a>.
         </li>
       </ul>

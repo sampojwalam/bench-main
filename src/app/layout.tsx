@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { SITE_URL, HOME_TITLE, HOME_DESCRIPTION } from "@/lib/metadata";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
@@ -8,13 +9,12 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://benchgymlog.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Bench Gym Log — Meet your new gym companion.",
+    default: HOME_TITLE,
     template: "%s — Bench Gym Log",
   },
-  description:
-    "Bench Gym Log is your gym companion — log every set, monitor progress, set goals, and discover workouts from a worldwide community of serious lifters.",
+  description: HOME_DESCRIPTION,
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -23,19 +23,7 @@ export const metadata: Metadata = {
     ],
     apple: "/apple-touch-icon.png",
   },
-  openGraph: {
-    title: "Bench Gym Log — Meet your new gym companion.",
-    description:
-      "Your gym companion for tracking every set, hitting every goal, and discovering workouts from a worldwide community of lifters.",
-    type: "website",
-    url: "https://benchgymlog.com",
-    siteName: "Bench Gym Log",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Bench Gym Log — Meet your new gym companion.",
-    description: "Your gym companion for serious lifters.",
-  },
+
 };
 
 export default function RootLayout({

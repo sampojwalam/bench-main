@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/metadata";
 import { SocialPage } from "@/components/features/SocialPage";
 import { WorkoutHistoryPage } from "@/components/features/WorkoutHistoryPage";
 import { GoalsPage } from "@/components/features/GoalsPage";
@@ -33,24 +34,22 @@ export function generateMetadata({
 }): Metadata {
   const f = featureBySlug(params.slug);
   if (!f) return {};
-  return {
-    title: f.name,
-    description: f.slug === "workout-tracking"
+  const description = f.slug === "workout-tracking"
       ? "Log your sets, follow your routine, and keep track of your rest with Bench. Unlimited workout tracking on iOS, Android, and the web."
       : f.slug === "analytics"
         ? "Track your strength, multi-rep maxes, workout totals, and training volume by muscle group with Bench Progress Analytics."
         : f.slug === "workout-library"
-          ? "Build custom workout routines, explore public workouts, save your favorites, and share a workout link anyone can view without logging in."
+          ? "Build custom workout routines, explore public workouts, save routines to your profile, and share a workout link anyone can view without logging in."
           : f.slug === "exercise-library"
             ? "Explore over 400 exercises for weighted, bodyweight, timed, and cardio training. Search the library and build custom exercises with Bench."
             : f.slug === "goals"
               ? "Set workout frequency, exercise, and muscle group goals with Bench. Build consistent habits, work toward strength milestones, and follow your goal history."
               : f.slug === "history"
-                ? "Browse your complete workout history with Bench. Explore calendar and list views, revisit every logged set, and edit past sessions with Premium."
+                ? "Revisit every session and see how far you’ve come. Add missed workouts and earlier training with Bench Premium to build a fuller picture of your progress."
                 : f.slug === "social"
                   ? "Share routines, exercises, and completed workout logs in Bench chat. Send public workout and profile links that anyone can view without logging in."
-                  : f.tagline,
-  };
+                  : f.tagline;
+  return pageMetadata(f.slug === "goals" ? "Workout Goals" : f.name, description, `/features/${f.slug}`);
 }
 
 export default function FeaturePage({

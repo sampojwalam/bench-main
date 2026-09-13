@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { LegalLayout } from "@/components/LegalLayout";
 
-export const metadata: Metadata = {
-  title: "Terms & Conditions",
-  description:
-    "The terms governing your use of Bench Gym Log.",
-};
+export const metadata = pageMetadata(
+  "Terms & Conditions",
+  "The terms governing your use of Bench Gym Log.",
+  "/terms-and-conditions",
+);
 
 export default function TermsAndConditions() {
   return (

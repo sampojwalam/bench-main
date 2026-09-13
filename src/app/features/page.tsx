@@ -1,15 +1,15 @@
 import Link from "next/link";
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { Section } from "@/components/Section";
 import { Icon } from "@/components/Icon";
 import { features } from "@/lib/features";
 import styles from "./FeaturesIndex.module.css";
 
-export const metadata: Metadata = {
-  title: "Features",
-  description:
-    "Explore Bench Gym Log: workout tracking, progress analytics, custom routines, over 400 exercises, goals, complete workout history, and sharing with other lifters.",
-};
+export const metadata = pageMetadata(
+  "Workout Tracking Features",
+  "Explore Bench Gym Log: workout tracking, progress analytics, custom routines, over 400 exercises, goals, complete workout history, and sharing with other lifters.",
+  "/features",
+);
 
 // Index-specific summaries keep the overview concise without changing other pages.
 const summaries: Record<string, string> = {
