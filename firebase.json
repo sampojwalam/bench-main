@@ -1,0 +1,204 @@
+{
+  "hosting": {
+    "site": "bench-gym-log-main",
+    "public": "out",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "redirects": [
+      {
+        "source": "/docs",
+        "destination": "/features",
+        "type": 301
+      },
+      {
+        "source": "/docs/",
+        "destination": "/features",
+        "type": 301
+      },
+      {
+        "source": "/docs/what-is-bench",
+        "destination": "/features",
+        "type": 301
+      },
+      {
+        "source": "/docs/what-is-bench/",
+        "destination": "/features",
+        "type": 301
+      },
+      {
+        "source": "/docs/how-to-log-an-empty-workout",
+        "destination": "/features/workout-tracking",
+        "type": 301
+      },
+      {
+        "source": "/docs/how-to-log-an-empty-workout/",
+        "destination": "/features/workout-tracking",
+        "type": 301
+      },
+      {
+        "source": "/docs/how-to-log-a-saved-workout",
+        "destination": "/features/workout-tracking",
+        "type": 301
+      },
+      {
+        "source": "/docs/how-to-log-a-saved-workout/",
+        "destination": "/features/workout-tracking",
+        "type": 301
+      },
+      {
+        "source": "/docs/how-to-set-a-rest-timer",
+        "destination": "/features/workout-tracking",
+        "type": 301
+      },
+      {
+        "source": "/docs/how-to-set-a-rest-timer/",
+        "destination": "/features/workout-tracking",
+        "type": 301
+      },
+      {
+        "source": "/docs/what-are-goals-in-bench",
+        "destination": "/features/goals",
+        "type": 301
+      },
+      {
+        "source": "/docs/what-are-goals-in-bench/",
+        "destination": "/features/goals",
+        "type": 301
+      },
+      {
+        "source": "/docs/delete-bench-account",
+        "destination": "/privacy-policy#account-deletion",
+        "type": 301
+      },
+      {
+        "source": "/docs/delete-bench-account/",
+        "destination": "/privacy-policy#account-deletion",
+        "type": 301
+      },
+      {
+        "source": "/docs/media-kit",
+        "destination": "/contact",
+        "type": 301
+      },
+      {
+        "source": "/docs/media-kit/",
+        "destination": "/contact",
+        "type": 301
+      },
+      {
+        "source": "/docs-category/getting-started",
+        "destination": "/features",
+        "type": 301
+      },
+      {
+        "source": "/docs-category/getting-started/",
+        "destination": "/features",
+        "type": 301
+      },
+      {
+        "source": "/docs-category/workouts",
+        "destination": "/features/workout-tracking",
+        "type": 301
+      },
+      {
+        "source": "/docs-category/workouts/",
+        "destination": "/features/workout-tracking",
+        "type": 301
+      },
+      {
+        "source": "/docs-category/goals",
+        "destination": "/features/goals",
+        "type": 301
+      },
+      {
+        "source": "/docs-category/goals/",
+        "destination": "/features/goals",
+        "type": 301
+      },
+      {
+        "source": "/docs-category/account",
+        "destination": "/privacy-policy#account-deletion",
+        "type": 301
+      },
+      {
+        "source": "/docs-category/account/",
+        "destination": "/privacy-policy#account-deletion",
+        "type": 301
+      },
+      {
+        "source": "/docs-category/about",
+        "destination": "/contact",
+        "type": 301
+      },
+      {
+        "source": "/docs-category/about/",
+        "destination": "/contact",
+        "type": 301
+      }
+    ],
+    "headers": [
+      {
+        "source": "**",
+        "headers": [
+          {
+            "key": "X-Content-Type-Options",
+            "value": "nosniff"
+          },
+          {
+            "key": "Referrer-Policy",
+            "value": "strict-origin-when-cross-origin"
+          }
+        ]
+      },
+      {
+        "source": "/_next/static/**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public,max-age=31536000,immutable"
+          }
+        ]
+      },
+      {
+        "source": "/_images/**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public,max-age=31536000,immutable"
+          }
+        ]
+      },
+      {
+        "source": "/images/social/**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public,max-age=86400"
+          }
+        ]
+      },
+      {
+        "source": "/images/exercise-thumbnails/**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public,max-age=86400"
+          }
+        ]
+      }
+    ]
+  },
+  "emulators": {
+    "hosting": {
+      "port": 3102
+    },
+    "ui": {
+      "enabled": false
+    }
+  }
+}

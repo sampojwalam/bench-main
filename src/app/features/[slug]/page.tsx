@@ -23,16 +23,18 @@ import {
 import { Icon } from "@/components/Icon";
 import { features, featureBySlug } from "@/lib/features";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return features.map((f) => ({ slug: f.slug }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
-}): Metadata {
-  const f = featureBySlug(params.slug);
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const f = featureBySlug((await params).slug);
   if (!f) return {};
   const description = f.slug === "workout-tracking"
       ? "Log your sets, follow your routine, and keep track of your rest with Bench. Unlimited workout tracking on iOS, Android, and the web."
@@ -52,12 +54,12 @@ export function generateMetadata({
   return pageMetadata(f.slug === "goals" ? "Workout Goals" : f.name, description, `/features/${f.slug}`);
 }
 
-export default function FeaturePage({
+export default async function FeaturePage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const feature = featureBySlug(params.slug);
+  const feature = featureBySlug((await params).slug);
   if (!feature) notFound();
   if (feature.slug === "workout-tracking") return <WorkoutTrackingPage />;
   if (feature.slug === "analytics") return <ProgressAnalyticsPage />;

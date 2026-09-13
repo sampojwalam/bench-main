@@ -27,8 +27,8 @@ const config: Config = {
         surface: "#FAFAFC",
       },
       fontFamily: {
-        sans: ["Plus Jakarta Sans", "system-ui", "sans-serif"],
-        display: ["Plus Jakarta Sans", "system-ui", "sans-serif"],
+        sans: ["var(--font-jakarta)", "Plus Jakarta Sans", "system-ui", "sans-serif"],
+        display: ["var(--font-jakarta)", "Plus Jakarta Sans", "system-ui", "sans-serif"],
       },
       backgroundImage: {
         "bench-gradient": "linear-gradient(to right, #AB55FF, #375FEA)",

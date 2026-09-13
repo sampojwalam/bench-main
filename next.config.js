@@ -1,25 +1,16 @@
+const redirects = require('./config/legacy-redirects.json');
+const exporting = process.env.BENCH_STATIC_EXPORT === '1';
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
   reactStrictMode: true,
-  async redirects() {
-    // Published WordPress guides and category archives, inventoried before migration.
-    // Core pages retain their paths; Next normalizes trailing slashes automatically.
-    return [
-      { source: "/docs", destination: "/features", permanent: true },
-      { source: "/docs/what-is-bench", destination: "/features", permanent: true },
-      { source: "/docs/how-to-log-an-empty-workout", destination: "/features/workout-tracking", permanent: true },
-      { source: "/docs/how-to-log-a-saved-workout", destination: "/features/workout-tracking", permanent: true },
-      { source: "/docs/how-to-set-a-rest-timer", destination: "/features/workout-tracking", permanent: true },
-      { source: "/docs/what-are-goals-in-bench", destination: "/features/goals", permanent: true },
-      { source: "/docs/delete-bench-account", destination: "/privacy-policy#account-deletion", permanent: true },
-      { source: "/docs/media-kit", destination: "/contact", permanent: true },
-      { source: "/docs-category/getting-started", destination: "/features", permanent: true },
-      { source: "/docs-category/workouts", destination: "/features/workout-tracking", permanent: true },
-      { source: "/docs-category/goals", destination: "/features/goals", permanent: true },
-      { source: "/docs-category/account", destination: "/privacy-policy#account-deletion", permanent: true },
-      { source: "/docs-category/about", destination: "/contact", permanent: true },
-    ];
+  poweredByHeader: false,
+  ...(exporting ? { output: 'export', distDir: 'out' } : {}),
+  images: {
+    loader: 'custom',
+    loaderFile: './src/lib/static-image-loader.ts',
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [32, 48, 64, 96, 128, 256, 384],
   },
+  // Firebase serves the same redirect map for exported builds.
+  ...(!exporting ? { async redirects() { return redirects; } } : {}),
 };
-
-module.exports = nextConfig;

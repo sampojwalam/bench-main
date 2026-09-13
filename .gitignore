@@ -34,3 +34,10 @@ next-env.d.ts
 
 # Local planning notes
 /docs/
+
+# Generated static build assets and Firebase local state
+/public/_images/
+/src/generated/
+/.firebase/
+/firebase-debug.log*
+/firebase.preview.json
