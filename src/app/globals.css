@@ -100,15 +100,22 @@
   top: 12px;
   left: 12px;
   z-index: 100;
-  padding: 12px 18px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
   border-radius: 10px;
   background: #0b0b12;
   color: #fff;
   font-weight: 600;
-  transform: translateY(calc(-100% - 16px));
 }
 .skip-link:focus {
-  transform: translateY(0);
+  width: auto;
+  height: auto;
+  padding: 12px 18px;
+  overflow: visible;
+  clip-path: none;
   outline: 3px solid #ab55ff;
   outline-offset: 3px;
 }

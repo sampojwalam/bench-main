@@ -34,10 +34,10 @@ export default function HomePage() {
           aria-hidden
           className="pointer-events-none absolute inset-0 -z-10"
         >
-          <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[700px] w-[1100px] bg-bench-radial-soft blur-2xl" />
+          <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[700px] w-[1100px] bg-bench-radial-soft" />
           <div className="absolute inset-0 bg-grid bg-grid opacity-50 grid-mask" />
-          <div className="absolute left-[18%] top-40 h-72 w-72 rounded-full bg-bench-purple/15 blur-[120px] animate-glow" />
-          <div className="absolute right-[16%] top-60 h-72 w-72 rounded-full bg-bench-blue/15 blur-[120px] animate-glow" />
+          <div className={`${styles.heroGlow} ${styles.heroGlowPurple} animate-glow`} />
+          <div className={`${styles.heroGlow} ${styles.heroGlowBlue} animate-glow`} />
         </div>
 
         <div className="mx-auto max-w-7xl px-5 sm:px-8 text-center">

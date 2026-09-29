@@ -1,3 +1,19 @@
+/* Gradients preserve the soft glow without the large blur filters that stall
+   Mobile Safari's page-color sampling when it restores a tab. */
+.heroGlow {
+  position: absolute;
+  width: 768px;
+  height: 768px;
+  background: radial-gradient(circle closest-side,
+    rgb(var(--glow-rgb) / .08),
+    rgb(var(--glow-rgb) / .06) 25%,
+    rgb(var(--glow-rgb) / .025) 50%,
+    rgb(var(--glow-rgb) / .005) 75%,
+    transparent);
+}
+.heroGlowPurple { --glow-rgb: 171 85 255; left: calc(18% - 240px); top: -80px; }
+.heroGlowBlue { --glow-rgb: 55 95 234; right: calc(16% - 240px); top: 0; }
+
 .heroStage {
   position: relative;
   isolation: isolate;
