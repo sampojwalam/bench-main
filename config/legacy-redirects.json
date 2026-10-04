@@ -63,5 +63,15 @@
     "source": "/docs-category/about",
     "destination": "/contact",
     "permanent": true
+  },
+  {
+    "source": "/help-center",
+    "destination": "/features",
+    "permanent": true
+  },
+  {
+    "source": "/test",
+    "destination": "/",
+    "permanent": true
   }
 ]

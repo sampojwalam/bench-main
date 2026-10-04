@@ -139,6 +139,26 @@
         "source": "/docs-category/about/",
         "destination": "/contact",
         "type": 301
+      },
+      {
+        "source": "/help-center",
+        "destination": "/features",
+        "type": 301
+      },
+      {
+        "source": "/help-center/",
+        "destination": "/features",
+        "type": 301
+      },
+      {
+        "source": "/test",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/test/",
+        "destination": "/",
+        "type": 301
       }
     ],
     "headers": [
