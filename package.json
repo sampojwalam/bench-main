@@ -15,7 +15,7 @@
     "deploy:hosting": "npm run build && npm run hosting:config && firebase deploy --only hosting --project bench-331ff"
   },
   "dependencies": {
-    "next": "^16.3.5",
+    "next": "^16.4.2",
     "qrcode.react": "^4.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
@@ -26,7 +26,7 @@
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
-    "sharp": "^0.35.4",
+    "sharp": "^0.35.5",
     "tailwindcss": "^3.4.10",
     "typescript": "^5.5.4"
   }

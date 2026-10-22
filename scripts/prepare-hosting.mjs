@@ -13,6 +13,10 @@ const config = {
       {source:'**',headers:[
         {key:'X-Content-Type-Options',value:'nosniff'},
         {key:'Referrer-Policy',value:'strict-origin-when-cross-origin'},
+        // No site may show these pages in a frame (clickjacking); the second
+        // header is for browsers that predate frame-ancestors.
+        {key:'Content-Security-Policy',value:"frame-ancestors 'none'"},
+        {key:'X-Frame-Options',value:'DENY'},
         ...(preview ? [{key:'X-Robots-Tag',value:'noindex, nofollow'}] : []),
       ]},
       {source:'/_next/static/**',headers:[{key:'Cache-Control',value:'public,max-age=31536000,immutable'}]},
