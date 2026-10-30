@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Icon } from "@/components/Icon";
 import styles from "./download.module.css";
 import { DownloadQRCodes } from "./DownloadQRCodes";
-import { Section, Eyebrow } from "@/components/Section";
+import { Section } from "@/components/Section";
 import {
   AppStoreButton,
   PlayStoreButton,
@@ -29,8 +29,7 @@ export default function DownloadPage() {
         </div>
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div className="text-center lg:text-left">
-            <Eyebrow>Download Bench</Eyebrow>
-            <h1 className={`${styles.title} mt-5 font-bold tracking-tight text-balance text-ink-900`}>
+            <h1 className={`${styles.title} font-bold tracking-tight text-balance text-ink-900`}>
               Get Bench on <span className="bench-gradient-text">every device.</span>
             </h1>
             <p className="mt-5 text-base sm:text-lg text-ink-500 text-pretty max-w-xl mx-auto lg:mx-0">
