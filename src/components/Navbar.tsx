@@ -8,11 +8,11 @@ import { Button } from "./Button";
 import { features } from "@/lib/features";
 
 // Mobile menu rows: phone-sized type, text lined up with the logo, room to tap.
-// The page you're on gets a soft background and heavier text.
+const mobileRow = "-mx-3 flex items-center px-3 py-3 rounded-xl text-base text-ink-900";
+
+// Page links: the page you're on gets a soft background and heavier text.
 function mobileItem(current: boolean) {
-  return `-mx-3 flex items-center px-3 py-3 rounded-xl text-base text-ink-900 hover:bg-ink-50 transition-colors ${
-    current ? "bg-ink-50 font-semibold" : "font-medium"
-  }`;
+  return `${mobileRow} hover:bg-ink-50 transition-colors ${current ? "bg-ink-50 font-semibold" : "font-medium"}`;
 }
 
 export function Navbar() {
@@ -203,7 +203,9 @@ export function Navbar() {
               aria-expanded={mobileFeaturesOpen}
               aria-controls="mobile-features"
               onClick={() => setMobileFeaturesOpen((v) => !v)}
-              className={`${mobileItem(pathname === "/features")} justify-between`}
+              // Only opens and closes the list, so it's never highlighted: no
+              // hover background (phones keep it after a tap) and no tap flash.
+              className={`${mobileRow} font-medium justify-between [-webkit-tap-highlight-color:transparent]`}
             >
               Features
               <svg
