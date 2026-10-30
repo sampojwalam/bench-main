@@ -5,6 +5,7 @@ import { Button } from "@/components/Button";
 import { WebAppButton, StoreButtonGroup } from "@/components/StoreButtons";
 import { Icon } from "@/components/Icon";
 import styles from "./WorkoutTrackingPage.module.css";
+import { AllFeaturesLink } from "./AllFeaturesLink";
 import goals from "./GoalsPage.module.css";
 
 const categories = [
@@ -16,7 +17,7 @@ const categories = [
 export function GoalsPage() {
   return <div className={`${styles.page} ${goals.page}`}>
     <Section className={styles.hero}>
-      <Link href="/features" className={styles.back}>← All features</Link>
+      <AllFeaturesLink />
       <div className={styles.heroGrid}>
         <div className={styles.heroCopy}>
           <div className={styles.featureIcon} aria-hidden="true"><Icon name="flag" size={28} /></div>

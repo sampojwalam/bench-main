@@ -5,13 +5,14 @@ import { Button } from "@/components/Button";
 import { WebAppButton, StoreButtonGroup } from "@/components/StoreButtons";
 import { Icon } from "@/components/Icon";
 import styles from "./WorkoutTrackingPage.module.css";
+import { AllFeaturesLink } from "./AllFeaturesLink";
 import analytics from "./ProgressAnalyticsPage.module.css";
 
 export function ProgressAnalyticsPage() {
   return (
     <div className={`${styles.page} ${analytics.page}`}>
       <Section className={styles.hero}>
-        <Link href="/features" className={styles.back}>← All features</Link>
+        <AllFeaturesLink />
         <div className={styles.heroGrid}>
           <div className={styles.heroCopy}>
             <div className={styles.featureIcon} aria-hidden="true"><Icon name="monitoring" size={28} /></div>

@@ -5,12 +5,13 @@ import { Button } from "@/components/Button";
 import { WebAppButton, StoreButtonGroup } from "@/components/StoreButtons";
 import { Icon } from "@/components/Icon";
 import styles from "./WorkoutTrackingPage.module.css";
+import { AllFeaturesLink } from "./AllFeaturesLink";
 
 export function WorkoutTrackingPage() {
   return (
     <div className={styles.page}>
       <Section className={styles.hero}>
-        <Link href="/features" className={styles.back}>← All features</Link>
+        <AllFeaturesLink />
         <div className={styles.heroGrid}>
           <div className={styles.heroCopy}>
             <div className={styles.featureIcon}><Icon name="fitness_center" size={28} /></div>

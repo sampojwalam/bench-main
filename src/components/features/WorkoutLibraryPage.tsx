@@ -5,6 +5,7 @@ import { Button } from "@/components/Button";
 import { WebAppButton, StoreButtonGroup } from "@/components/StoreButtons";
 import { Icon } from "@/components/Icon";
 import styles from "./WorkoutTrackingPage.module.css";
+import { AllFeaturesLink } from "./AllFeaturesLink";
 import library from "./WorkoutLibraryPage.module.css";
 
 const exampleWorkout = "https://app.benchgymlog.com/workout/YAWgvfcqCls3EpYmCx2a";
@@ -13,7 +14,7 @@ export function WorkoutLibraryPage() {
   return (
     <div className={`${styles.page} ${library.page}`}>
       <Section className={styles.hero}>
-        <Link href="/features" className={styles.back}>← All features</Link>
+        <AllFeaturesLink />
         <div className={styles.heroGrid}>
           <div className={styles.heroCopy}>
             <div className={styles.featureIcon} aria-hidden="true"><Icon name="explore" size={28} /></div>

@@ -6,6 +6,7 @@ import { WebAppButton, StoreButtonGroup } from "@/components/StoreButtons";
 import { Icon } from "@/components/Icon";
 import { DirectoryLauncher } from "./exercise-directory/DirectoryLauncher";
 import styles from "./WorkoutTrackingPage.module.css";
+import { AllFeaturesLink } from "./AllFeaturesLink";
 import exercises from "./ExerciseLibraryPage.module.css";
 
 const types = [
@@ -19,7 +20,7 @@ export function ExerciseLibraryPage() {
   return (
     <div className={`${styles.page} ${exercises.page}`}>
       <Section className={styles.hero}>
-        <Link href="/features" className={styles.back}>← All features</Link>
+        <AllFeaturesLink />
         <div className={styles.heroGrid}>
           <div className={styles.heroCopy}>
             <div className={styles.featureIcon} aria-hidden="true"><Icon name="list_alt" size={28} /></div>
