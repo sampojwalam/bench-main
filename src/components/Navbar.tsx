@@ -2,9 +2,18 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Logo } from "./Logo";
 import { Button } from "./Button";
 import { features } from "@/lib/features";
+
+// Mobile menu rows: phone-sized type, text lined up with the logo, room to tap.
+// The page you're on gets a soft background and heavier text.
+function mobileItem(current: boolean) {
+  return `-mx-3 flex items-center px-3 py-3 rounded-xl text-base text-ink-900 hover:bg-ink-50 transition-colors ${
+    current ? "bg-ink-50 font-semibold" : "font-medium"
+  }`;
+}
 
 export function Navbar() {
   const mobileTrigger = useRef<HTMLButtonElement>(null);
@@ -13,6 +22,8 @@ export function Navbar() {
   const [featuresOpen, setFeaturesOpen] = useState(false);
   const [mobileFeaturesOpen, setMobileFeaturesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const onFeaturePage = pathname.startsWith("/features/");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -150,7 +161,11 @@ export function Navbar() {
           aria-expanded={open}
           aria-controls="mobile-navigation"
           className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full bg-white border border-ink-200 text-ink-900"
-          onClick={() => setOpen((v) => !v)}
+          onClick={() => {
+            // Opening on a feature page shows that page in the Features list.
+            if (!open) setMobileFeaturesOpen(onFeaturePage);
+            setOpen(!open);
+          }}
         >
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
             {open ? (
@@ -174,11 +189,12 @@ export function Navbar() {
 
       {open && (
         <div id="mobile-navigation" className="md:hidden max-h-[calc(100dvh-4rem-1px)] overflow-y-auto overscroll-contain border-t border-ink-100 bg-white">
-          <div className="px-5 py-4 flex flex-col gap-1">
+          <div className="px-5 pt-3 pb-6 flex flex-col">
             <Link
               href="/"
               onClick={() => setOpen(false)}
-              className="px-3 py-2.5 rounded-lg text-sm text-ink-700 hover:bg-ink-50"
+              aria-current={pathname === "/" ? "page" : undefined}
+              className={mobileItem(pathname === "/")}
             >
               Home
             </Link>
@@ -187,15 +203,15 @@ export function Navbar() {
               aria-expanded={mobileFeaturesOpen}
               aria-controls="mobile-features"
               onClick={() => setMobileFeaturesOpen((v) => !v)}
-              className="px-3 py-2.5 rounded-lg text-sm text-ink-700 hover:bg-ink-50 flex items-center justify-between"
+              className={`${mobileItem(pathname === "/features")} justify-between`}
             >
               Features
               <svg
-                width="10"
-                height="10"
+                width="14"
+                height="14"
                 viewBox="0 0 10 10"
                 fill="none"
-                className={`transition-transform ${
+                className={`text-ink-400 transition-transform ${
                   mobileFeaturesOpen ? "rotate-180" : ""
                 }`}
               >
@@ -209,32 +225,43 @@ export function Navbar() {
               </svg>
             </button>
             {mobileFeaturesOpen && (
-              <div id="mobile-features" className="pl-3 flex flex-col">
-                {features.map((f) => (
-                  <Link
-                    key={f.slug}
-                    href={`/features/${f.slug}`}
-                    onClick={() => setOpen(false)}
-                    className="px-3 py-2 rounded-lg text-sm text-ink-500 hover:text-ink-900 hover:bg-ink-50"
-                  >
-                    {f.name}
-                  </Link>
-                ))}
+              <div id="mobile-features" className="mb-1 ml-1 pl-3 border-l border-ink-100 flex flex-col">
+                {features.map((f) => {
+                  const current = pathname === `/features/${f.slug}`;
+                  return (
+                    <Link
+                      key={f.slug}
+                      href={`/features/${f.slug}`}
+                      onClick={() => setOpen(false)}
+                      aria-current={current ? "page" : undefined}
+                      className={`relative px-3 py-2.5 rounded-lg text-[15px] hover:text-ink-900 hover:bg-ink-50 transition-colors ${
+                        current ? "font-semibold text-ink-900" : "text-ink-500"
+                      }`}
+                    >
+                      {/* Marks the current page on the list's guide line. */}
+                      {current && (
+                        <span aria-hidden="true" className="absolute -left-[13px] inset-y-2 w-0.5 rounded-full bench-gradient" />
+                      )}
+                      {f.name}
+                    </Link>
+                  );
+                })}
               </div>
             )}
             <Link
               href="/download"
               onClick={() => setOpen(false)}
-              className="px-3 py-2.5 rounded-lg text-sm text-ink-700 hover:bg-ink-50"
+              aria-current={pathname === "/download" ? "page" : undefined}
+              className={mobileItem(pathname === "/download")}
             >
               Download
             </Link>
-            <div className="h-px bg-ink-100 my-3" />
+            <div className="h-px bg-ink-100 my-4" />
             <Button
               href="https://app.benchgymlog.com/login"
               variant="primary"
               external
-              className="w-full"
+              className="w-full !py-3.5 !text-[15px]"
             >
               Log In
             </Button>
