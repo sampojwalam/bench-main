@@ -8,10 +8,12 @@ import styles from "./WorkoutTrackingPage.module.css";
 import { AllFeaturesLink } from "./AllFeaturesLink";
 import goals from "./GoalsPage.module.css";
 
+// Each goal type shows what its goal cards show in the app: a calendar for
+// general goals, the exercise's image, or the muscle group's diagram.
 const categories = [
-  { image: "general", title: "Show up consistently", label: "General goals", copy: "Give your training a rhythm with a target for how often you work out.", example: "Work out 3 times a week." },
-  { image: "exercise", title: "Focus on a movement", label: "Exercise goals", copy: "Work toward a strength milestone or give a specific exercise more attention.", example: "Log 10 sets of squats each week." },
-  { image: "legs", title: "Make room for weak points", label: "Muscle group goals", copy: "Set a target for a muscle group you want to train more deliberately.", example: "Complete 10 working sets for legs per week." },
+  { id: "general", icon: "calendar_month", title: "Show up consistently", label: "General goals", copy: "Give your training a rhythm with a target for how often you work out.", example: "Work out 3 times a week." },
+  { id: "exercise", image: { src: "/screenshots/goals/barbell-back-squat.png", width: 340, height: 300 }, title: "Focus on a movement", label: "Exercise goals", copy: "Work toward a strength milestone or give a specific exercise more attention.", example: "Log 10 sets of squats each week." },
+  { id: "legs", image: { src: "/screenshots/goals/legs-muscles.png", width: 400, height: 400 }, fills: true, title: "Make room for weak points", label: "Muscle group goals", copy: "Set a target for a muscle group you want to train more deliberately.", example: "Complete 10 working sets for legs per week." },
 ];
 
 export function GoalsPage() {
@@ -32,8 +34,11 @@ export function GoalsPage() {
     <Section className={styles.storySection}>
       <article className={goals.typesPanel}>
         <div className={goals.intro}><span className={styles.step}>01 / GOAL TYPES</span><h2>Choose what matters.<br />Give it a target.</h2><p>A little more consistency. A stronger squat. Fewer skipped leg days. Start with the part of your training you want to improve.</p></div>
-        <div className={goals.typesGrid}>{categories.map(category => <div className={goals.typeCard} key={category.image}>
-          <Image src={`/screenshots/goals/${category.image}-icon-aligned.webp`} alt="" width={160} height={160} className={goals.typeIcon} />
+        <div className={goals.typesGrid}>{categories.map(category => <div className={goals.typeCard} key={category.id}>
+          <div className={`${goals.typeTile} ${category.fills ? goals.typeTileFill : ""}`} aria-hidden="true">
+            {category.icon && <Icon name={category.icon} size={37} />}
+            {category.image && <Image src={category.image.src} alt="" width={category.image.width} height={category.image.height} sizes="72px" />}
+          </div>
           <span className={styles.step}>{category.label}</span><h3>{category.title}</h3><p>{category.copy}</p><div className={goals.example}><span>Example</span>{category.example}</div>
         </div>)}</div>
       </article>
