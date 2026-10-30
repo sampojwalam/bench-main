@@ -2,7 +2,7 @@ import { SiteStructuredData } from "@/components/SiteStructuredData";
 import { pageMetadata, HOME_TITLE, HOME_DESCRIPTION } from "@/lib/metadata";
 import Image from "next/image";
 import Link from "next/link";
-import { Section, Eyebrow } from "@/components/Section";
+import { Section } from "@/components/Section";
 import { Button } from "@/components/Button";
 import { StoreButtonGroup } from "@/components/StoreButtons";
 import styles from "./home.module.css";
@@ -113,9 +113,9 @@ export default function HomePage() {
         <div className={styles.deviceStrip}>
           <p className="font-semibold text-ink-900">One Account. All Your Devices.</p>
           {[
-            { icon: "phone_iphone", text: "Made for the gym floor" },
-            { icon: "desktop_windows", text: "See the bigger picture" },
-            { icon: "done_all", text: "Automatically synced" },
+            { icon: "phone_iphone", text: "Log workouts on your phone" },
+            { icon: "desktop_windows", text: "Plan and review on the web" },
+            { icon: "done_all", text: "Always in sync" },
           ].map(({ icon, text }) => (
             <div key={text} className="flex items-center gap-3 text-ink-500"><span aria-hidden="true" className="inline-flex shrink-0 items-center leading-none text-ink-400"><Icon name={icon} size={22} /></span><span>{text}</span></div>
           ))}
@@ -127,15 +127,14 @@ export default function HomePage() {
         <div className={styles.spotlightGrid}>
           <article className={`${styles.featureCard} ${styles.trackingCard}`}>
             <div className={styles.featureCopy}>
-              <span className={styles.featureLabel}>01 / WORKOUT TRACKING</span>
-              <h2 className="mt-5 text-4xl sm:text-5xl font-bold tracking-tight text-balance text-ink-900">
+              <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-balance text-ink-900">
                 Log a set in <span className="bench-gradient-text">one tap.</span>
               </h2>
               <p className="mt-5 text-lg text-ink-500 text-pretty">
                 Log your sets, check exercise history and stats, and keep
                 track of rest. Follow a routine or build your session as you go.
               </p>
-              <div className="mt-8"><Button href="/features/workout-tracking" variant="ghost">Explore workout tracking</Button></div>
+              <div><Button href="/features/workout-tracking" variant="ghost" arrow>Explore workout tracking</Button></div>
             </div>
             <div className={`${styles.phoneStage} ${styles.purpleStage}`}>
               <Image src="/screenshots/log-workout-mockup.png" alt="Bench mobile workout log with warmup and working sets" width={722} height={1500} sizes="(min-width: 640px) 270px, 225px" className={`${styles.cardPhone} ${styles.tiltRight}`} />
@@ -144,15 +143,14 @@ export default function HomePage() {
 
           <article className={styles.featureCard}>
             <div className={styles.featureCopy}>
-              <span className={styles.featureLabel}>02 / PROGRESS ANALYTICS</span>
-              <h2 className={`${styles.cardHeading} mt-5 tracking-tight text-balance text-ink-900`}>
+              <h2 className={`${styles.cardHeading} tracking-tight text-balance text-ink-900`}>
                 See how your training adds up.
               </h2>
               <p className="mt-4 text-ink-500 leading-relaxed">
                 Follow strength trends, check multi-rep maxes, and see how
                 your training volume is distributed across muscle groups.
               </p>
-              <div className="mt-8"><Button href="/features/analytics" variant="ghost">Explore analytics</Button></div>
+              <div><Button href="/features/analytics" variant="ghost" arrow>Explore progress analytics</Button></div>
             </div>
             <div className={`${styles.phoneStage} ${styles.purpleStage}`}>
               <Image src="/screenshots/analytics-mockup.png" alt="Bench mobile analytics showing volume distribution across muscle groups" width={722} height={1500} sizes="(min-width: 640px) 270px, 225px" className={`${styles.cardPhone} ${styles.tiltLeft}`} />
@@ -161,31 +159,31 @@ export default function HomePage() {
 
           {[
             {
-              eyebrow: "Goals", title: "Stay accountable to a target.",
+              title: "Stay accountable to a target.",
               copy: "Build consistency, work toward strength milestones, or focus on a muscle group. Bench tracks goal progress from your logged workouts.",
               href: "/features/goals", cta: "Explore goal setting", image: "goals",
               alt: "Bench mobile app showing progress toward a training goal", blue: true,
             },
             {
-              eyebrow: "Workout library", title: "Discover workouts from real lifters.",
+              title: "Discover workouts from real lifters.",
               copy: "Build your own routines or discover workouts from other lifters. Preview a public workout, save a copy, and make it your own.",
               href: "/features/workout-library", cta: "Explore workout library", image: "workout-library",
               alt: "Bench mobile app showing a community workout and its exercises", blue: true,
             },
             {
-              eyebrow: "Social", title: "You lift harder when you're not alone.",
+              title: "You lift harder when you're not alone.",
               copy: "Share routines, exercises, completed sessions, and profiles in chat. Send public workout and profile links anyone can view.",
               href: "/features/social", cta: "Explore social features", image: "social",
               alt: "A direct message conversation between lifters in Bench", blue: false,
             },
             {
-              eyebrow: "History", title: "Every session, forever.",
+              title: "Every session, forever.",
               copy: "Find past sessions in calendar or list view and revisit your sets, reps, and notes. Your entire workout history is included free.",
               href: "/features/history", cta: "Explore workout history", image: "history",
               alt: "Bench workout history showing a calendar of completed sessions", blue: false,
             },
             {
-              eyebrow: "Exercise library", title: "A place for every movement.",
+              title: "A place for every movement.",
               copy: "Explore over 400 exercises or create your own. Find movements for weighted, bodyweight, timed, and cardio training.",
               href: "/features/exercise-library", cta: "Explore exercise library", image: "exercise-library",
               alt: "Bench exercise library organized by muscle group", blue: true,
@@ -193,10 +191,9 @@ export default function HomePage() {
           ].map((card, index) => (
             <article key={card.href} className={styles.featureCard}>
               <div className={styles.featureCopy}>
-                <span className={styles.featureLabel}>{String(index + 3).padStart(2, "0")} / {card.eyebrow}</span>
-                <h3 className={`${styles.cardHeading} mt-5 tracking-tight text-balance text-ink-900`}>{card.title}</h3>
+                <h3 className={`${styles.cardHeading} tracking-tight text-balance text-ink-900`}>{card.title}</h3>
                 <p className="mt-4 text-ink-500 leading-relaxed">{card.copy}</p>
-                <div className="mt-8"><Button href={card.href} variant="ghost">{card.cta}</Button></div>
+                <div><Button href={card.href} variant="ghost" arrow>{card.cta}</Button></div>
               </div>
               <div className={`${styles.phoneStage} ${card.blue ? styles.blueStage : styles.purpleStage}`}>
                 <Image src={`/screenshots/${card.image}-mockup.png`} alt={card.alt} width={card.image === "goals" ? 723 : 722} height={1500} sizes="(min-width: 640px) 270px, 225px" className={`${styles.cardPhone} ${index % 2 === 0 ? styles.tiltRight : styles.tiltLeft}`} />
@@ -208,10 +205,9 @@ export default function HomePage() {
 
       {/* ============== BENCH ON THE WEB ============== */}
       <Section id="bench-on-web" className="py-20 sm:py-28 border-y border-ink-100 bg-ink-50/70 overflow-hidden">
-        <div className="grid md:grid-cols-2 gap-6 md:gap-16 items-end mb-12">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-16 items-start mb-12">
           <div>
-            <Eyebrow>Meet Bench on the web</Eyebrow>
-            <h2 className="mt-5 text-4xl sm:text-5xl font-bold tracking-tight text-balance text-ink-900">
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-balance text-ink-900">
               See the<br /><span className="bench-gradient-text">bigger picture.</span>
             </h2>
           </div>
@@ -220,7 +216,7 @@ export default function HomePage() {
               Review your history, build your routines, and explore your progress
               with room to breathe. Sign in with the same account you use on mobile.
             </p>
-            <div className="mt-7"><Button href="https://app.benchgymlog.com/signup" external variant="ghost">Get Started on Web</Button></div>
+            <div className="mt-5"><Button href="https://app.benchgymlog.com/signup" external variant="ghost" arrow>Get Started on Web</Button></div>
           </div>
         </div>
         <div className={styles.webStage}><BrowserPreview /></div>
@@ -230,8 +226,7 @@ export default function HomePage() {
       <Section className="pt-20 sm:pt-28">
         <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-8 lg:gap-20">
           <div>
-            <Eyebrow>Frequently asked questions</Eyebrow>
-            <h2 className="mt-5 text-4xl sm:text-5xl font-bold tracking-tight text-balance text-ink-900">A little more about Bench.</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-balance text-ink-900">A little more about Bench.</h2>
             <p className="mt-5 text-ink-500">Need a hand? <Link className="underline underline-offset-4 hover:text-ink-900" href="/contact">Get in touch.</Link></p>
           </div>
           <div className={styles.faqList}>
